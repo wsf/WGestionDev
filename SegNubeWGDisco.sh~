@@ -1,0 +1,15 @@
+
+#!/bin/bash
+# -*- ENCODING: UTF-8 -*-
+
+sudo cp  /media/ale/w10/vbprog/WgestionDev/*.dca  /media/ale/MULTIBOOT1/Ale/SeguridadWgDev
+sudo cp  /media/ale/w10/vbprog/WgestionDev/*.dsr  /media/ale/MULTIBOOT1/Ale/SeguridadWgDev
+sudo cp  /media/ale/w10/vbprog/WgestionDev/*.dsx  /media/ale/MULTIBOOT1/Ale/SeguridadWgDev
+sudo cp  /media/ale/w10/vbprog/WgestionDev/*.frm  /media/ale/MULTIBOOT1/Ale/SeguridadWgDev
+sudo cp  /media/ale/w10/vbprog/WgestionDev/*.frx  /media/ale/MULTIBOOT1/Ale/SeguridadWgDev
+sudo cp  /media/ale/w10/vbprog/WgestionDev/*.jar  /media/ale/MULTIBOOT1/Ale/SeguridadWgDev
+sudo cp  /media/ale/w10/vbprog/WgestionDev/*.vbp  /media/ale/MULTIBOOT1/Ale/SeguridadWgDev
+sudo cp  /media/ale/w10/vbprog/WgestionDev/*.vbp  /media/ale/MULTIBOOT1/Ale/SeguridadWgDev
+sudo cp  /media/ale/w10/vbprog/WgestionDev/*.xml  /media/ale/MULTIBOOT1/Ale/SeguridadWgDev
+sudo cp  /media/ale/w10/vbprog/WgestionDev/*.bas  /media/ale/MULTIBOOT1/Ale/SeguridadWgDev
+

@@ -1,0 +1,874 @@
+VERSION 5.00
+Begin VB.PropertyPage AlphaIconPropertyPage 
+   Caption         =   "Seleccionar"
+   ClientHeight    =   4560
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   5700
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   4560
+   ScaleWidth      =   5700
+   Begin VB.CheckBox Check1 
+      Caption         =   "Escala de grises"
+      Enabled         =   0   'False
+      Height          =   255
+      Left            =   2640
+      TabIndex        =   6
+      Top             =   3240
+      Width           =   1455
+   End
+   Begin VB.VScrollBar VScroll1 
+      Enabled         =   0   'False
+      Height          =   300
+      Index           =   1
+      Left            =   4530
+      Max             =   0
+      Min             =   255
+      SmallChange     =   5
+      TabIndex        =   5
+      Top             =   3615
+      Value           =   255
+      Width           =   270
+   End
+   Begin VB.VScrollBar VScroll1 
+      Enabled         =   0   'False
+      Height          =   300
+      Index           =   0
+      Left            =   4530
+      Max             =   -255
+      Min             =   255
+      SmallChange     =   5
+      TabIndex        =   4
+      Top             =   4095
+      Width           =   270
+   End
+   Begin VB.PictureBox Picture1 
+      AutoRedraw      =   -1  'True
+      BackColor       =   &H00FFFFFF&
+      BorderStyle     =   0  'None
+      Height          =   2940
+      Left            =   2640
+      ScaleHeight     =   196
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   196
+      TabIndex        =   3
+      Top             =   120
+      Width           =   2940
+   End
+   Begin VB.ListBox lbIcon 
+      Height          =   2940
+      IntegralHeight  =   0   'False
+      Left            =   120
+      TabIndex        =   1
+      Top             =   120
+      Width           =   2340
+   End
+   Begin VB.CommandButton Command2 
+      Caption         =   "Archivo"
+      Height          =   375
+      Left            =   120
+      TabIndex        =   0
+      Top             =   3240
+      Width           =   1095
+   End
+   Begin VB.CommandButton Command1 
+      Caption         =   "Recurso"
+      Height          =   375
+      Left            =   1320
+      TabIndex        =   2
+      Top             =   3240
+      Width           =   1095
+   End
+   Begin VB.TextBox Text1 
+      Enabled         =   0   'False
+      Height          =   330
+      Index           =   0
+      Left            =   3960
+      Locked          =   -1  'True
+      TabIndex        =   7
+      Text            =   "0"
+      Top             =   4080
+      Width           =   855
+   End
+   Begin VB.TextBox Text1 
+      Enabled         =   0   'False
+      Height          =   330
+      Index           =   1
+      Left            =   3960
+      Locked          =   -1  'True
+      TabIndex        =   8
+      Text            =   "255"
+      Top             =   3600
+      Width           =   855
+   End
+   Begin VB.Label Label1 
+      Caption         =   "Transparencia:"
+      Enabled         =   0   'False
+      Height          =   195
+      Index           =   1
+      Left            =   2640
+      TabIndex        =   10
+      Top             =   3680
+      Width           =   1065
+   End
+   Begin VB.Label Label1 
+      Caption         =   "Brillo/Oscuridad:"
+      Enabled         =   0   'False
+      Height          =   195
+      Index           =   0
+      Left            =   2640
+      TabIndex        =   9
+      Top             =   4150
+      Width           =   1170
+   End
+End
+Attribute VB_Name = "AlphaIconPropertyPage"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = False
+Option Explicit
+
+' ----------------------------------------------------------------------------------
+' Autor:     Leandro I. Ascierto
+' Web:       www.leandroascierto.com.ar
+' Fecha:     20 de septiembre de 2009
+'
+' Creditos:   Cobein(www.advancevb.com.ar), LaVolpe, Paul Caton, Steve McMahon(www.vbaccelerator.com), Frank Schüler(www.activevb.de)
+' ----------------------------------------------------------------------------------
+
+Private Declare Sub RtlMoveMemory Lib "kernel32" (ByVal Destination As Long, ByVal Source As Long, ByVal Length As Long)
+Private Declare Function VirtualAlloc Lib "kernel32" (ByVal lpAddress As Long, ByVal dwSize As Long, ByVal flAllocationType As Long, ByVal flProtect As Long) As Long
+Private Declare Function VirtualFree Lib "kernel32" (ByVal lpAddress As Long, ByVal dwSize As Long, ByVal dwFreeType As Long) As Long
+Private Declare Function GetModuleHandleA Lib "kernel32" (ByVal lpModuleName As String) As Long
+Private Declare Function GetProcAddress Lib "kernel32" (ByVal hModule As Long, ByVal lpProcName As String) As Long
+Private Declare Function LoadLibrary Lib "kernel32.dll" Alias "LoadLibraryA" (ByVal lpLibFileName As String) As Long
+Private Declare Function IsBadCodePtr Lib "kernel32" (ByVal lpfn As Long) As Long
+Private Declare Function EnumResourceNamesByNum Lib "kernel32" Alias "EnumResourceNamesA" (ByVal hModule As Long, ByVal lpType As Long, ByVal lpEnumFunc As Long, ByVal lParam As Long) As Long
+Private Declare Function FreeLibrary Lib "kernel32" (ByVal hLibModule As Long) As Long
+Private Declare Function DrawIconEx Lib "user32.dll" (ByVal hdc As Long, ByVal xLeft As Long, ByVal yTop As Long, ByVal hIcon As Long, ByVal cxWidth As Long, ByVal cyWidth As Long, ByVal istepIfAniCur As Long, ByVal hbrFlickerFreeDraw As Long, ByVal diFlags As Long) As Long
+Private Declare Function CreateIconFromResourceEx Lib "user32.dll" (ByRef presbits As Any, ByVal dwResSize As Long, ByVal fIcon As Long, ByVal dwVer As Long, ByVal cxDesired As Long, ByVal cyDesired As Long, ByVal flags As Long) As Long
+Private Declare Function LoadLibraryEx Lib "kernel32" Alias "LoadLibraryExA" (ByVal lpLibFileName As String, ByVal hFile As Long, ByVal dwFlags As Long) As Long
+Private Declare Function LoadResource Lib "kernel32" (ByVal hInstance As Long, ByVal hResInfo As Long) As Long
+Private Declare Function LockResource Lib "kernel32" (ByVal hResData As Long) As Long
+Private Declare Function FindResource Lib "kernel32" Alias "FindResourceA" (ByVal hInstance As Long, lpName As Any, lpType As Any) As Long
+Private Declare Function SizeofResource Lib "kernel32" (ByVal hInstance As Long, ByVal hResInfo As Long) As Long
+Private Declare Function FindResourceByNum Lib "kernel32" Alias "FindResourceA" (ByVal hInstance As Long, ByVal lpName As String, ByVal lpType As Long) As Long
+Private Declare Function GetOpenFileName Lib "COMDLG32" Alias "GetOpenFileNameA" (file As OPENFILENAME) As Long
+Private Declare Function PickIconDlg Lib "shell32.dll" Alias "#62" (ByVal hwndOwner As Long, ByVal lpstrFile As String, ByVal nMaxFile As Long, lpdwiIndex As Long) As Long
+Private Declare Sub CopyMemory Lib "kernel32.dll" Alias "RtlMoveMemory" (ByRef pDst As Any, ByRef pSrc As Any, ByVal ByteLen As Long)
+Private Declare Function DestroyIcon Lib "user32" (ByVal hIcon As Long) As Long
+Private Declare Function StrLen Lib "kernel32" Alias "lstrlenA" (ByVal lpString As Long) As Long
+Private Declare Function StrCpy Lib "kernel32" Alias "lstrcpyA" (ByVal lpString1 As String, ByVal lpString2 As Long) As Long
+
+Private Const ICONVERSION               As Long = &H30000
+Private Const LR_DEFAULTCOLOR           As Long = &H0
+Private Const LOAD_LIBRARY_AS_DATAFILE  As Long = &H2&
+
+Private Const RT_ICON = 3
+Private Const DIFFERENCE = 11
+Private Const RT_GROUP_ICON = RT_ICON + DIFFERENCE
+
+Private Const DI_MASK = &H1
+Private Const DI_IMAGE = &H2
+Private Const DI_NORMAL = DI_MASK Or DI_IMAGE
+
+Private Type ICONDIR
+   idReserved           As Integer              '// Reserved
+   idType               As Integer              '// resource type (1 for icons)
+   idCount              As Integer              '// how many images?
+   'idEntries()         as ICONDIRENTRY         '//array follows.
+End Type
+
+Private Type ICONDIRENTRY
+   bWidth               As Byte                 '// Width of the image
+   bHeight              As Byte                 '// Height of the image (times 2)
+   bColorCount          As Byte                 '// Number of colors in image (0 if >=8bpp)
+   bReserved            As Byte                 '// Reserved
+   wPlanes              As Integer              '// Color Planes
+   wBitCount            As Integer              '// Bits per pixel
+   dwBytesInRes         As Long                 '// how many bytes in this resource?
+   dwImageOffset        As Long                 '// where in the file is this image
+End Type
+
+Private Type MEMICONDIRENTRY
+   bWidth               As Byte                 '// Width of the image
+   bHeight              As Byte                 '// Height of the image (times 2)
+   bColorCount          As Byte                 '// Number of colors in image (0 if >=8bpp)
+   bReserved            As Byte                 '// Reserved
+   wPlanes              As Integer              '// Color Planes
+   wBitCount            As Integer              '// Bits per pixel
+   dwBytesInRes         As Long                 '// how many bytes in this resource?
+   nID                  As Integer              '// the ID
+End Type
+
+Private Type tBits
+   bBits() As Byte
+End Type
+
+Private Type OPENFILENAME
+    lStructSize         As Long                 ' Filled with UDT size
+    hwndOwner           As Long                 ' Tied to Owner
+    hInstance           As Long                 ' Ignored (used only by templates)
+    lpstrFilter         As String               ' Tied to Filter
+    lpstrCustomFilter   As String               ' Ignored (exercise for reader)
+    nMaxCustFilter      As Long                 ' Ignored (exercise for reader)
+    nFilterIndex        As Long                 ' Tied to FilterIndex
+    lpstrFile           As String               ' Tied to FileName
+    nMaxFile            As Long                 ' Handled internally
+    lpstrFileTitle      As String               ' Tied to FileTitle
+    nMaxFileTitle       As Long                 ' Handled internally
+    lpstrInitialDir     As String               ' Tied to InitDir
+    lpstrTitle          As String               ' Tied to DlgTitle
+    flags               As Long                 ' Tied to Flags
+    nFileOffset         As Integer              ' Ignored (exercise for reader)
+    nFileExtension      As Integer              ' Ignored (exercise for reader)
+    lpstrDefExt         As String               ' Tied to DefaultExt
+    lCustData           As Long                 ' Ignored (needed for hooks)
+    lpfnHook            As Long                 ' Ignored (good luck with hooks)
+    lpTemplateName      As Long                 ' Ignored (good luck with templates)
+End Type
+
+Private m_tIconHeader   As ICONDIR
+Private m_tIconEntry()  As ICONDIRENTRY
+Private m_tBits()       As tBits
+Private ArrResource()   As String
+Private z_CbMem         As Long                 'Callback allocated memory address
+Private z_Cb()          As Long                 'Callback thunk array
+Private m_oImageIcon32  As AlphaIcon
+
+
+Private Sub Check1_Click()
+    DrawIcon lbIcon.ListIndex
+End Sub
+
+
+Private Sub PropertyPage_Initialize()
+    Dim i As Long, j As Long, x As Long
+    For j = -1 To Picture1.ScaleHeight Step 6
+        x = IIf(x = -1, 5, -1)
+        For i = x To Picture1.ScaleWidth Step 12
+            Picture1.Line (i, j)-(i + 5, j + 5), &HCCCCCC, BF
+        Next
+    Next
+    
+    Picture1.Line (0, 0)-(Picture1.ScaleWidth - 1, Picture1.ScaleWidth - 1), vbHighlight, B
+    Picture1 = Picture1.Image
+End Sub
+
+
+Private Sub VScroll1_Change(Index As Integer)
+    Text1(Index) = VScroll1(Index).Value
+    DrawIcon lbIcon.ListIndex
+End Sub
+
+
+Private Function FilterData(ByRef bData() As Byte, ByRef tempData() As Byte)
+    Dim lR As Long, lG As Long, lB As Long, lA As Long
+    Dim lGray As Long
+    Dim i As Long
+    Dim lAlpha As Long
+    Dim lBrightness As Long
+    Debug.Print Now
+    lBrightness = Text1(0)
+    lAlpha = Val(Text1(1))
+    
+    CopyMemory tempData(0), bData(0), Len(m_tIconEntry(0))
+    
+    For i = Len(m_tIconEntry(0)) To UBound(bData) - 4 Step 4
+        lR = bData(i)
+        lG = bData(i + 1)
+        lB = bData(i + 2)
+        lA = bData(i + 3)
+        
+        If Check1 Then
+            lGray = (222 * lR + 707 * lG + 71 * lB) / 1000
+            lB = lGray: lG = lGray: lR = lGray
+        End If
+        
+        If lAlpha <> 255 Then
+            If lA <> 0 Then lA = (lAlpha * lA / 255)
+        End If
+        
+        If lBrightness <> 0 Then
+            If lR > 0 Or lG > 0 Or lB > 0 Then
+            lR = lR + lBrightness
+            lG = lG + lBrightness
+            lB = lB + lBrightness
+            End If
+        End If
+        
+        If lR < 0 Then lR = 0
+        If lR > 255 Then lR = 255
+        If lG < 0 Then lG = 0
+        If lG > 255 Then lG = 255
+        If lB < 0 Then lB = 0
+        If lB > 255 Then lB = 255
+            
+        tempData(i) = lR
+        tempData(i + 1) = lG
+        tempData(i + 2) = lB
+        tempData(i + 3) = lA
+    Next
+End Function
+
+
+Private Sub PropertyPage_SelectionChanged()
+
+    Dim lLeft As Long, lTop As Long
+    Set m_oImageIcon32 = SelectedControls(0)
+    
+    If m_oImageIcon32.Icon <> 0 Then
+        With Picture1
+            .Cls
+            lLeft = (.ScaleWidth / 2) - (m_oImageIcon32.IconWidth / 2)
+            lTop = (.ScaleHeight / 2) - (m_oImageIcon32.IconHeight / 2)
+            DrawIconEx .hdc, lLeft, lTop, m_oImageIcon32.Icon, m_oImageIcon32.IconWidth, m_oImageIcon32.IconHeight, 0, 0, DI_NORMAL
+            .Refresh
+        End With
+    End If
+End Sub
+
+
+Private Sub PropertyPage_ApplyChanges()
+    Dim bBits() As Byte
+    Dim Index As Long
+    
+        If lbIcon.ListCount > 0 Then
+            Index = lbIcon.ListIndex
+        
+            If m_tIconEntry(Index).bWidth = 0 And m_tIconEntry(Index).bHeight = 0 Then
+                m_oImageIcon32.IconWidth = 256
+                m_oImageIcon32.IconHeight = 256
+            Else
+                m_oImageIcon32.IconWidth = m_tIconEntry(Index).bWidth
+                m_oImageIcon32.IconHeight = m_tIconEntry(Index).bHeight
+            End If
+            
+            If m_tIconEntry(Index).wBitCount = 32 Then
+                ReDim bBits(UBound(m_tBits(Index).bBits()))
+                FilterData m_tBits(Index).bBits(), bBits()
+            Else
+                bBits() = m_tBits(Index).bBits()
+            End If
+            
+            m_oImageIcon32.ppgSetStream bBits()
+        End If
+
+End Sub
+
+
+Private Sub Command1_Click()
+
+    Dim sFile As String
+    Dim iIndex As Long
+    Dim sLen As Long
+    Dim hIcon As Long
+    Dim retval As Long
+
+    sFile = "shell32.dll" & vbNullChar & Space(256)
+    sFile = StrConv(sFile, vbUnicode)
+    retval = PickIconDlg(PropertyPage.hWnd, sFile, Len(sFile), iIndex)
+    sFile = StrConv(sFile, vbFromUnicode)
+    sFile = Left(sFile, InStr(sFile, vbNullChar) - 1)
+
+    If retval <> 0 Then
+        If LCase$(Right$(sFile, 3)) = "ico" Then
+            If LoadIconFromFile(sFile) Then
+                EnumereIcon
+                DoEvents
+                lbIcon_Click
+            End If
+        Else
+            If LoadIconFromResource(sFile, iIndex) Then
+                EnumereIcon
+                DoEvents
+                lbIcon_Click
+            End If
+        End If
+    End If
+    
+End Sub
+
+
+Private Sub Command2_Click()
+    Dim OFName As OPENFILENAME
+    
+    With OFName
+        .lStructSize = Len(OFName)
+        .hwndOwner = PropertyPage.hWnd
+        .hInstance = App.hInstance
+        .lpstrFilter = "Archivos Iconos (*.ICO)" + Chr$(0) + "*.Ico" + Chr$(0)
+        .lpstrFile = String(254, Chr(0))
+        .nMaxFile = 255
+    
+        If GetOpenFileName(OFName) Then
+            If LoadIconFromFile(Left(OFName.lpstrFile, InStr(OFName.lpstrFile, Chr(0)) - 1)) Then
+                EnumereIcon
+                DoEvents
+                lbIcon_Click
+            End If
+        End If
+    End With
+End Sub
+
+
+Private Sub EnumereIcon()
+
+    Dim lngItem As Long
+    lbIcon.Clear
+    
+    For lngItem = 0 To m_tIconHeader.idCount - 1
+        lbIcon.AddItem "Icon " & lngItem + 1 & ": " & m_tIconEntry(lngItem).bWidth & "x" & m_tIconEntry(lngItem).bHeight & "x" & IconColorDepth(lngItem) & "Bit"
+    Next lngItem
+    
+    lbIcon.SetFocus
+    lbIcon.ListIndex = lbIcon.ListCount - 1
+    
+End Sub
+
+
+Private Sub lbIcon_Click()
+    Dim Index As Long
+    Index = lbIcon.ListIndex
+    EnabledControls m_tIconEntry(Index).wBitCount = 32
+  
+    If lbIcon.ListCount > 0 Then
+        DrawIcon Index
+    End If
+End Sub
+
+
+Private Sub EnabledControls(Value As Long)
+    Dim i As Integer
+    For i = 0 To 1
+        Text1(i).Enabled = Value
+        VScroll1(i).Enabled = Value
+        Label1(i).Enabled = Value
+    Next
+    VScroll1(0).Value = 0
+    VScroll1(1).Value = 255
+    Check1.Enabled = Value
+End Sub
+
+
+Private Function DrawIcon(ByVal Index As Long) As Boolean
+    Dim hIcon As Long
+    Dim lLeft As Long, lTop As Long
+    Dim lWidth As Long, lHeight As Long
+    Dim bBits() As Byte
+    
+    If m_tIconEntry(Index).wBitCount = 32 Then
+        ReDim bBits(UBound(m_tBits(Index).bBits()))
+        FilterData m_tBits(Index).bBits(), bBits()
+    Else
+        bBits() = m_tBits(Index).bBits()
+    End If
+
+    hIcon = CreateIconFromResourceEx(bBits(0), m_tIconEntry(Index).dwBytesInRes, 1, ICONVERSION, m_tIconEntry(Index).bWidth, m_tIconEntry(Index).bHeight, LR_DEFAULTCOLOR)
+    Picture1.Cls
+    If hIcon <> 0 Then
+          
+        If m_tIconEntry(Index).bWidth = 0 And m_tIconEntry(Index).bHeight = 0 Then
+            lWidth = 256
+            lHeight = 256
+        Else
+            lWidth = m_tIconEntry(Index).bWidth
+            lHeight = m_tIconEntry(Index).bHeight
+        End If
+
+        With Picture1
+            lLeft = (.ScaleWidth / 2) - (lWidth / 2)
+            lTop = (.ScaleHeight / 2) - (lHeight / 2)
+            DrawIconEx .hdc, lLeft, lTop, hIcon, lWidth, lHeight, 0, 0, DI_NORMAL
+            .Refresh
+        End With
+        
+        PropertyPage.Changed = True
+        DestroyIcon hIcon
+    End If
+End Function
+
+
+Public Function LoadIconFromResource(ByVal sFile As String, Optional ByVal lpID As Long = 0, Optional ByVal lpName As String = "") As Boolean
+    Dim hLibrary As Long
+    Dim hRsrc As Long
+    Dim hGlobal As Long
+    Dim lPtr As Long
+    Dim iEntry As Long
+    Dim tMIDE As MEMICONDIRENTRY
+    Dim nID() As Integer
+    Dim iBaseOffset As Long
+    Dim lSize As Long
+    Dim bFail As Boolean
+
+   ' Loads an Icon from an Executable (EXE, DLL etc).  Use the EnumResources module
+   ' to determine the available resource IDs.
+
+   Erase m_tIconEntry
+   Erase m_tBits
+   ReDim ArrResource(0)
+   
+   With m_tIconHeader
+      .idCount = 0
+      .idReserved = 0
+      .idType = 0
+   End With
+
+   hLibrary = LoadLibraryEx(sFile, ByVal 0&, LOAD_LIBRARY_AS_DATAFILE)
+
+   If (hLibrary = 0) Then
+      ' Failed to load the executable. Probably not a Win32 EXE.
+      'Err.Raise vbObjectError + 1048 + 6, App.EXEName & ".cFileIcon", "Can't load library."
+      LoadIconFromResource = False
+   Else
+   
+      Call EnumResourceNamesByNum(hLibrary, RT_GROUP_ICON, zb_AddressOf(1, 4, 1), 0)
+   
+      lpName = ArrResource(lpID)
+    
+      hRsrc = FindResourceByNum(hLibrary, ByVal lpName, ByVal RT_GROUP_ICON)
+
+      If (hRsrc = 0) Then
+         ' Resource not found in this library:
+         'Err.Raise vbObjectError + 1048 + 7, App.EXEName & ".cFileIcon", "Can't find resource."
+         LoadIconFromResource = False
+      Else
+         ' Load the resource (returns a handle which can be used to access the data):
+         hGlobal = LoadResource(hLibrary, hRsrc)
+         If (hGlobal = 0) Then
+            'Err.Raise vbObjectError + 1048 + 8, App.EXEName & ".cFileIcon", "Can't load resource."
+            LoadIconFromResource = False
+         Else
+            ' Lock the resource for reading (returns a pointer to the resource data):
+            lPtr = LockResource(hGlobal)
+            If (lPtr = 0) Then
+               'Err.Raise vbObjectError + 1048 + 8, App.EXEName & ".cFileIcon", "Can't lock resource."
+               LoadIconFromResource = False
+            Else
+               ' Get the icon header:
+               CopyMemory m_tIconHeader, ByVal lPtr, Len(m_tIconHeader)
+               'Debug.Print m_tIconHeader.idCount, m_tIconHeader.idReserved, m_tIconHeader.idType
+               
+               ' Do we have icons in this resource?
+               If (m_tIconHeader.idCount > 0) Then
+                  
+                  ' For each of the entries, get the icon directory information:
+                  ReDim m_tIconEntry(0 To m_tIconHeader.idCount - 1) As ICONDIRENTRY
+                  ReDim nID(0 To m_tIconHeader.idCount - 1) As Integer
+                  
+                  ' Get all the directory information into a byte array (to avoid
+                  ' problems with WORD alignment of structures):
+                  ReDim B(0 To Len(m_tIconHeader) + Len(tMIDE) * m_tIconHeader.idCount - 1) As Byte
+                  CopyMemory B(0), ByVal lPtr, Len(m_tIconHeader) + Len(tMIDE) * m_tIconHeader.idCount
+                  
+                  ' Loop through the entries, getting the IDs and creating a standard
+                  ' ICONDIRENTRY structure:
+                  For iEntry = 0 To m_tIconHeader.idCount - 1
+                     ' Get the MEMICONDIRENTRY structure:
+                     CopyMemory tMIDE, B(Len(m_tIconHeader) + iEntry * Len(tMIDE)), Len(tMIDE)
+                     ' Store the icon's resource id:
+                     nID(iEntry) = tMIDE.nID
+                     ' Copy data into standard ICONDIRENTRY structure.  Note the .dwImageOffset
+                     ' member will be wrong at this stage:
+                     CopyMemory m_tIconEntry(iEntry), tMIDE, Len(tMIDE)
+                  Next iEntry
+                  
+                  ' Now correct the ICONDIRENTRY byte offsets:
+                  iBaseOffset = Len(m_tIconHeader) + Len(m_tIconEntry(0)) * m_tIconHeader.idCount
+                  m_tIconEntry(0).dwImageOffset = iBaseOffset
+                  For iEntry = 1 To m_tIconHeader.idCount - 1
+                     m_tIconEntry(iEntry).dwImageOffset = m_tIconEntry(iEntry - 1).dwImageOffset + m_tIconEntry(iEntry - 1).dwBytesInRes
+                  Next iEntry
+                  
+                  ' Now we have the ICONDIRENTRY structures, get the actual bits of the icons:
+                  ReDim m_tBits(0 To m_tIconHeader.idCount - 1) As tBits
+                  For iEntry = 0 To m_tIconHeader.idCount - 1
+                     ' Load the icon with the specified resource ID:
+                     lpName = "#" & nID(iEntry)
+                     hRsrc = FindResource(hLibrary, ByVal lpName, ByVal RT_ICON)
+                     If (hRsrc = 0) Then
+                        bFail = True
+                        Exit For
+                     Else
+                        ' Load the resource:
+                        hGlobal = LoadResource(hLibrary, hRsrc)
+                        If (hGlobal = 0) Then
+                           bFail = True
+                           Exit For
+                        Else
+                           ' Determine the size of the resource:
+                           lSize = SizeofResource(hLibrary, hRsrc)
+                           ' If the size is valid:
+                           If (lSize > 0) And (lSize = m_tIconEntry(iEntry).dwBytesInRes) Then
+                              ' Lock the resource and get a pointer to the memory:
+                              lPtr = LockResource(hGlobal)
+                              If (lPtr = 0) Then
+                                 bFail = True
+                                 Exit For
+                              Else
+                                 ' Store this memory in the bitmap bits array:
+                                 ReDim Preserve m_tBits(iEntry).bBits(0 To lSize - 1) As Byte
+                                 CopyMemory m_tBits(iEntry).bBits(0), ByVal lPtr, lSize
+                              End If
+                           Else
+                              bFail = True
+                           End If
+                        End If
+                     End If
+                  Next iEntry
+
+                  ' Did we succeed?
+                  If (bFail) Then
+                     'Err.Raise vbObjectError + 1048 + 9, App.EXEName & ".cFileIcon", "Failed to read bitmap bits from resource."
+                     ' ensure clear:
+                     sFile = ""
+                     Erase m_tIconEntry
+                     Erase m_tBits
+                     m_tIconHeader.idCount = 0
+                  End If
+                  LoadIconFromResource = Not (bFail)
+                                       
+               End If
+               
+            End If
+         End If
+      End If
+      
+      ' Free library:
+      FreeLibrary hLibrary
+   End If
+      
+End Function
+
+
+Public Function LoadIconFromFile(ByVal IcoFileName As String) As Boolean
+
+    Dim bytIcoData() As Byte
+    Dim FF As Long
+    Dim i As Long
+    
+    If Dir(IcoFileName) <> "" Then
+    
+        If LCase$(Right$(IcoFileName, 3)) = "ico" Then
+            Erase m_tIconEntry
+            Erase m_tBits
+            
+            FF = FreeFile
+
+            Open IcoFileName For Binary Access Read As #FF
+                ReDim bytIcoData(LOF(FF) - 1)
+                Get #FF, , bytIcoData()
+            Close #FF
+            
+            Call CopyMemory(m_tIconHeader, bytIcoData(0), Len(m_tIconHeader))
+
+            If m_tIconHeader.idType = 1 Then
+
+                If m_tIconHeader.idCount >= 1 Then
+
+                    ReDim m_tIconEntry(m_tIconHeader.idCount - 1)
+
+                    Call CopyMemory(m_tIconEntry(0), bytIcoData(Len(m_tIconHeader)), Len(m_tIconEntry(0)) * m_tIconHeader.idCount)
+                    
+                    ReDim m_tBits(m_tIconHeader.idCount - 1)
+                    
+                    For i = 0 To m_tIconHeader.idCount - 1
+                        ReDim m_tBits(i).bBits(m_tIconEntry(i).dwBytesInRes - 1)
+                        Call CopyMemory(m_tBits(i).bBits(0), bytIcoData(m_tIconEntry(i).dwImageOffset), m_tIconEntry(i).dwBytesInRes)
+                    Next
+
+                    LoadIconFromFile = True
+                    
+                End If
+            End If
+        End If
+    End If
+    
+End Function
+
+
+Public Function IconColorDepth(ByVal Index As Long) As Long
+    If m_tIconEntry(Index).wPlanes = 1 Then
+        ' 16bit, 24bit, 32bit
+        IconColorDepth = m_tIconEntry(Index).wBitCount
+    Else
+        ' 1bit, 4bit, 8bit
+        Select Case m_tIconEntry(Index).bColorCount
+            Case 2:     IconColorDepth = 1
+            Case 16:    IconColorDepth = 4
+            Case Else:  IconColorDepth = 8
+        End Select
+    End If
+End Function
+
+
+Private Sub PropertyPage_Terminate()
+    Call zTerminate
+End Sub
+
+
+Private Function zb_AddressOf(ByVal nOrdinal As Long, _
+       ByVal nParamCount As Long, _
+       Optional ByVal nThunkNo As Long = 0, _
+       Optional ByVal oCallback As Object = Nothing, _
+       Optional ByVal bIdeSafety As Boolean = True) As Long   'Return the address of the specified callback thunk
+       
+    '*************************************************************************************************
+    '* nOrdinal     - Callback ordinal number, the final private method is ordinal 1, the second last is ordinal 2, etc...
+    '* nParamCount  - The number of parameters that will callback
+    '* nThunkNo     - Optional, allows multiple simultaneous callbacks by referencing different thunks... adjust the MAX_THUNKS Const if you need to use more than two thunks simultaneously
+    '* oCallback    - Optional, the object that will receive the callback. If undefined, callbacks are sent to this object's instance
+    '* bIdeSafety   - Optional, set to false to disable IDE protection.
+    '*************************************************************************************************
+    
+    Const MAX_FUNKS   As Long = 2                                               'Number of simultaneous thunks, adjust to taste
+    Const FUNK_LONGS  As Long = 22                                              'Number of Longs in the thunk
+    Const FUNK_LEN    As Long = FUNK_LONGS * 4                                  'Bytes in a thunk
+    Const MEM_LEN     As Long = MAX_FUNKS * FUNK_LEN                            'Memory bytes required for the callback thunk
+    Const PAGE_RWX    As Long = &H40&                                           'Allocate executable memory
+    Const MEM_COMMIT  As Long = &H1000&                                         'Commit allocated memory
+    Dim nAddr         As Long
+  
+    If nThunkNo < 0 Or nThunkNo > (MAX_FUNKS - 1) Then
+        MsgBox "nThunkNo doesn't exist.", vbCritical + vbApplicationModal, "Error in " & TypeName(Me) & ".cb_Callback"
+        Exit Function
+    End If
+  
+    If oCallback Is Nothing Then                                                'If the user hasn't specified the callback owner
+        Set oCallback = Me                                                      'Then it is me
+    End If
+  
+    nAddr = zAddressOf(oCallback, nOrdinal)                                     'Get the callback address of the specified ordinal
+    If nAddr = 0 Then
+        MsgBox "Callback address not found.", vbCritical + vbApplicationModal, "Error in " & TypeName(Me) & ".cb_Callback"
+        Exit Function
+    End If
+  
+    If z_CbMem = 0 Then                                                         'If memory hasn't been allocated
+        ReDim z_Cb(0 To FUNK_LONGS - 1, 0 To MAX_FUNKS - 1) As Long             'Create the machine-code array
+        z_CbMem = VirtualAlloc(z_CbMem, MEM_LEN, MEM_COMMIT, PAGE_RWX)          'Allocate executable memory
+    End If
+  
+    If z_Cb(0, nThunkNo) = 0 Then                                               'If this ThunkNo hasn't been initialized...
+        z_Cb(3, nThunkNo) = _
+           GetProcAddress(GetModuleHandleA("kernel32"), "IsBadCodePtr")
+        z_Cb(4, nThunkNo) = &HBB60E089
+        z_Cb(5, nThunkNo) = VarPtr(z_Cb(0, nThunkNo))                           'Set the data address
+        z_Cb(6, nThunkNo) = &H73FFC589: z_Cb(7, nThunkNo) = &HC53FF04: z_Cb(8, nThunkNo) = &H7B831F75: z_Cb(9, nThunkNo) = &H20750008: z_Cb(10, nThunkNo) = &HE883E889: z_Cb(11, nThunkNo) = &HB9905004: z_Cb(13, nThunkNo) = &H74FF06E3: z_Cb(14, nThunkNo) = &HFAE2008D: z_Cb(15, nThunkNo) = &H53FF33FF: z_Cb(16, nThunkNo) = &HC2906104: z_Cb(18, nThunkNo) = &H830853FF: z_Cb(19, nThunkNo) = &HD87401F8: z_Cb(20, nThunkNo) = &H4589C031: z_Cb(21, nThunkNo) = &HEAEBFC
+    End If
+  
+    z_Cb(0, nThunkNo) = ObjPtr(oCallback)                                       'Set the Owner
+    z_Cb(1, nThunkNo) = nAddr                                                   'Set the callback address
+  
+    If bIdeSafety Then                                                          'If the user wants IDE protection
+        z_Cb(2, nThunkNo) = GetProcAddress(GetModuleHandleA("vba6"), "EbMode")  'EbMode Address
+    End If
+    
+    z_Cb(12, nThunkNo) = nParamCount                                            'Set the parameter count
+    z_Cb(17, nThunkNo) = nParamCount * 4                                        'Set the number of stck bytes to release on thunk return
+  
+    nAddr = z_CbMem + (nThunkNo * FUNK_LEN)                                     'Calculate where in the allocated memory to copy the thunk
+    RtlMoveMemory nAddr, VarPtr(z_Cb(0, nThunkNo)), FUNK_LEN                    'Copy thunk code to executable memory
+    zb_AddressOf = nAddr + 16                                                   'Thunk code start address
+End Function
+
+'Return the address of the specified ordinal method on the oCallback object, 1 = last private method, 2 = second last private method, etc
+Private Function zAddressOf(ByVal oCallback As Object, ByVal nOrdinal As Long) As Long
+    Dim bSub  As Byte                                                           'Value we expect to find pointed at by a vTable method entry
+    Dim bVal  As Byte
+    Dim nAddr As Long                                                           'Address of the vTable
+    Dim i     As Long                                                           'Loop index
+    Dim j     As Long                                                           'Loop limit
+  
+    RtlMoveMemory VarPtr(nAddr), ObjPtr(oCallback), 4                           'Get the address of the callback object's instance
+    If Not zProbe(nAddr + &H1C, i, bSub) Then                                   'Probe for a Class method
+        If Not zProbe(nAddr + &H6F8, i, bSub) Then                              'Probe for a Form method
+            If Not zProbe(nAddr + &H7A4, i, bSub) Then                          'Probe for a UserControl method
+                Exit Function                                                   'Bail...
+            End If
+        End If
+    End If
+  
+    i = i + 4                                                                   'Bump to the next entry
+    j = i + 1024                                                                'Set a reasonable limit, scan 256 vTable entries
+    Do While i < j
+        RtlMoveMemory VarPtr(nAddr), i, 4                                       'Get the address stored in this vTable entry
+    
+        If IsBadCodePtr(nAddr) Then                                             'Is the entry an invalid code address?
+            RtlMoveMemory VarPtr(zAddressOf), i - (nOrdinal * 4), 4             'Return the specified vTable entry address
+            Exit Do                                                             'Bad method signature, quit loop
+        End If
+
+        RtlMoveMemory VarPtr(bVal), nAddr, 1                                    'Get the byte pointed to by the vTable entry
+        If bVal <> bSub Then                                                    'If the byte doesn't match the expected value...
+            RtlMoveMemory VarPtr(zAddressOf), i - (nOrdinal * 4), 4             'Return the specified vTable entry address
+            Exit Do                                                             'Bad method signature, quit loop
+        End If
+    
+        i = i + 4                                                               'Next vTable entry
+    Loop
+End Function
+
+'Probe at the specified start address for a method signature
+Private Function zProbe(ByVal nStart As Long, ByRef nMethod As Long, ByRef bSub As Byte) As Boolean
+    Dim bVal    As Byte
+    Dim nAddr   As Long
+    Dim nLimit  As Long
+    Dim nEntry  As Long
+  
+    nAddr = nStart                                                              'Start address
+    nLimit = nAddr + 32                                                         'Probe eight entries
+    Do While nAddr < nLimit                                                     'While we've not reached our probe depth
+        RtlMoveMemory VarPtr(nEntry), nAddr, 4                                  'Get the vTable entry
+    
+        If nEntry <> 0 Then                                                     'If not an implemented interface
+            RtlMoveMemory VarPtr(bVal), nEntry, 1                               'Get the value pointed at by the vTable entry
+            If bVal = &H33 Or bVal = &HE9 Then                                  'Check for a native or pcode method signature
+                nMethod = nAddr                                                 'Store the vTable entry
+                bSub = bVal                                                     'Store the found method signature
+                zProbe = True                                                   'Indicate success
+                Exit Function                                                   'Return
+            End If
+        End If
+    
+        nAddr = nAddr + 4                                                       'Next vTable entry
+    Loop
+End Function
+
+Private Sub zTerminate()
+    Const MEM_RELEASE As Long = &H8000&                                         'Release allocated memory flag
+    If Not zb_AddressOf(1, 4, 1) = 0 Then                                       'If memory allocated
+        If Not VirtualFree(z_CbMem, 0, MEM_RELEASE) = 0 Then
+            z_CbMem = 0  'Release; Indicate memory released
+            Erase z_Cb()
+        End If
+    End If
+End Sub
+
+
+Private Function PtrToVBString(ByVal lpszBuffer As Long) As String
+    Dim Buffer As String, LenBuffer As Long
+    LenBuffer = StrLen(lpszBuffer)
+    Buffer = String(LenBuffer + 1, 0)
+    StrCpy Buffer, lpszBuffer
+    PtrToVBString = Left(Buffer, LenBuffer)
+End Function
+
+
+Private Function ResNamesCallBack(ByVal hMod As Long, ByVal ResType As Long, ByVal ResId As Long, ByVal lParam As Long) As Long
+
+    If (ResId > &HFFFF&) Or (ResId < 0) Then
+        ArrResource(UBound(ArrResource)) = PtrToVBString(ResId)
+    Else
+        ArrResource(UBound(ArrResource)) = "#" & ResId
+    End If
+
+    ReDim Preserve ArrResource(UBound(ArrResource) + 1)
+    ResNamesCallBack = True
+    
+End Function
+
+
+
+

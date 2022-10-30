@@ -1,0 +1,85 @@
+1. Carga de artículo
+
+-  codigo
+- rubros 
+- subrubros
+
+- pasamos las planillas de los proveedores automaticamante 
+
+
+
+2. Carga de proveedores
+
+Los proveedores se cargan antes que los artículos
+
+
+3. Carga de clientes 
+
+
+4. Carga de factura de compras
+
+- tiene que estar cargado el proveedor
+- tiene que estar cargado el articulo 
+
+- usar proveedor comodín 
+- usar artículo comodín 
+
+
+5. Pago a proveedores 
+
+- efectivo
+- cheques tercero
+	- se puede seleccionar de la lista de cheque en cartera
+		- previamente tiene que estar cargado. Se carga desde el pago de los clientes con cheques.
+
+6. Ventas de producto 
+
+- No blanco 
+	- seleccionar el botón "documento"
+	- carga los articulos 
+	- imprime el documento 
+
+7. Cobro a Cliente
+
+- Seleccionamos el cliente
+- Si nos paga con cheques, ingresamos los datos del cheque
+- Imprimimo recibo de cobro
+
+
+8. Ver Ctacte de Cliente 
+
+- Ir a clientes, cuentas corrientes, 
+- fecha desde/hasta
+- filtrar
+- imprimimos el listado
+
+
+9. Cheques
+
+
+- ir al módulo de cheques desde: Cheques, listado de cheques 
+
+- cuando se toma un pago de cliente con cheque automaticamente se carga en el módulo de cheques 
+- cuando se hace un pago a proveedores se puede seleccionar los cheques en cartera 
+
+- para seleccionar un cheque hay que filtrarlo primero con las opciones: 
+	- fecha de entrada del cheque desde/hasta 
+	- fecha de depósito del cheque 
+	- si está en cartera o entregado, etc
+- entrada de cheque desde el módulo de alta de cheques.
+	- esto ocurre cuando queremos dar de alta un cheque que no fue ingresado como pago de un cliente
+
+- para sacar por impresora el listado de los cheques. Filtar primero y luego presionar el botón "Listado Gral"
+
+
+10. Consultar documentos de ventas realizados
+
+- ir a Ventas, Listado de documento de ventas 
+- poner los datos del filtro 
+- ver el contenido de un documentos 
+	- (*) clic en el renglón de documento y luego presionar doble clic o el botón "ver documento"
+- cambiar el estado de un documento para registrar si está pago, en quebranto o pendiente 
+	- seleccionamos el documento (idem *) y presionamos el botón "cambiar estado"
+
+
+

@@ -1,0 +1,18 @@
+[History]
+B0=WGestion/frmRemito/llearDocumentos
+B1=WGestion/frmRemito/control_afip_factura
+B2=WGestion/frmRemito/Imprimir
+B3=WGestion/frmRemito/push_consultar_doc_Click
+B4=WGestion/frmPrincipal/MDIForm_Load
+B5=WGestion/frmSplash/VerEntradaAlSistema
+B6=WGestion/Procedimientos/verifico_ult_nrointerno_todasTablas
+B7=WGestion/Global/Login
+B8=WGestion/Global/pathDBMySQL
+B9=WGestion/frmLogin/cmdLogin_Click
+B10=WGestion/frmRemito/WCtaCte
+B11=WGestion/frmBuscarFactura/PushButton9_Click
+B12=WGestion/frmRemito/CargarFactura
+B13=WGestion/frmRemito/cboPuntoDeVenta_LostFocus
+B14=WGestion/frmRemito/CargarRemito
+[ColoredItems]
+0=16   WGestion/Module23    128

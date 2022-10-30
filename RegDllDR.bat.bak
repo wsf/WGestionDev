@@ -1,0 +1,5 @@
+>Regsvr32 MSDBRPT.DLL
+>Regsvr32 msdbrptr.dll
+>Regsvr32 MSDERUN.DLL
+>Regsvr32 MSDE.DLL
+

@@ -1,0 +1,1 @@
+START chrome.exe https://www.google.com/calendar/render#main_7%7Cmonth

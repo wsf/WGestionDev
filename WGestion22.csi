@@ -1,0 +1,4 @@
+[History]
+B0=WGestion/frmListadoSaldos/PbAcciones_Click
+B1=WGestion/Globals/prenderCartel
+B2=WGestion/frmPrincipal/MDIForm_Load

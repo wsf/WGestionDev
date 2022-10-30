@@ -1,0 +1,8 @@
+copy *.frm "f:\WgestionDev"
+copy *.bas "f:\WgestionDev"
+copy *.dca "f:\WgestionDev"
+copy *.crt "f:\WgestionDev"
+copy *.dsr "f:\WgestionDev"
+copy *.dsx "f:\WgestionDev"
+copy *.vbp "f:\WgestionDev"
+copy *.xml "f:\WgestionDev"
