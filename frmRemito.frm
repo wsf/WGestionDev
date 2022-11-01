@@ -6557,7 +6557,7 @@ On Error Resume Next
     'vClienteNuevo = False
     
     txtCliente(0).Text = EsNulo(rsClientes.Fields("Codigo").Value)
-    Me.txtcodigoCliente.Text = txtCliente(0).Text
+    Me.txtCodigoCliente.Text = txtCliente(0).Text
     
     Call txtCliente_KeyPress(0, 13)
     dgClientes.Visible = False
@@ -6626,6 +6626,10 @@ If Me.opTipoDoc(0).Value Then ' FACTURA
                 vtipoFactura = 1
             End If
             
+            If Me.cboLetra.Text = "M" Then
+                vtipoFactura = 51
+            End If
+            
             If Me.cboLetra.Text = "B" Then
                 
                 If cboTipoIva.Text = "Consumidor Final" Then
@@ -6637,6 +6641,9 @@ If Me.opTipoDoc(0).Value Then ' FACTURA
             
             
             End If
+            
+            
+            
             
             If Me.cboLetra.Text = "C" Then
                 vtipoFactura = 11
@@ -6652,6 +6659,10 @@ vetipoFactura = "NOTA DEBITO"
                 vtipoFactura = 2
             End If
             
+            If Me.cboLetra.Text = "M" Then
+                vtipoFactura = 52
+            End If
+            
             If Me.cboLetra.Text = "B" Then
                 vtipoFactura = 7
             End If
@@ -6663,6 +6674,10 @@ vetipoFactura = "NOTA CREDITO"
 
             If Me.cboLetra.Text = "A" Then
                 vtipoFactura = 3
+            End If
+            
+            If Me.cboLetra.Text = "M" Then
+                vtipoFactura = 53
             End If
             
             If Me.cboLetra.Text = "B" Then
@@ -7799,7 +7814,7 @@ On Error Resume Next
     
     
     If UCase(LeerXml("Textil")) = "ADBA" And vTipoBusqueda = "Articulos" Then
-        vTipoBusqueda = vTipoBusqueda + "-" + Me.txtcodigoCliente.Text
+        vTipoBusqueda = vTipoBusqueda + "-" + Me.txtCodigoCliente.Text
     End If
     
     ' poner acá la exclusion por codigo de barra
@@ -11348,7 +11363,7 @@ Public Sub txtCliente_KeyPress(Index As Integer, _
         If Index = 0 Then
         
             txtCliente(0).Text = EsNulo(rsClientes.Fields("Codigo").Value)
-            txtcodigoCliente.Text = txtCliente(0).Text
+            txtCodigoCliente.Text = txtCliente(0).Text
          
             If BuscarCliente = True Then
                 dtpFecha.SetFocus

@@ -473,7 +473,7 @@ End If
     
     
     
-    If vTipoComprobante = 3 Or vTipoComprobante = 8 Or vTipoComprobante = 13 Then
+    If vTipoComprobante = 3 Or vTipoComprobante = 8 Or vTipoComprobante = 13 Or vTipoComprobante = 53 Then
         
         fe.F1DetalleCbtesAsocTipo = vTipoComprobante
         fe.F1DetalleCbtesAsocPtoVta = Val(vPuntoDeVenta)
