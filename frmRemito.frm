@@ -10108,7 +10108,7 @@ End If
 .Sections("Totales").Controls("etotal").Caption = Format(vgTtotal, "#,###,##0.00")
 .Sections("Totales").Controls("esubtotal").Caption = Format(vgTsubtotal, "#,###,##0.00")
 
-If vtipoFactura > 5 Then ' saco los subtotales deiva
+If vtipoFactura > 5 And vtipoFactura < 50 Then ' saco los subtotales deiva
 
 .Sections("Totales").Controls("eiva105").Visible = False
 .Sections("Totales").Controls("eiva21").Visible = False

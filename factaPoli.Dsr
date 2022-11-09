@@ -3,17 +3,17 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
    Bindings        =   "factaPoli.dsx":0000
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Impresión de documento de ventas a Monotributistas"
-   ClientHeight    =   10875
+   ClientHeight    =   14925
    ClientLeft      =   45
    ClientTop       =   330
-   ClientWidth     =   19665
+   ClientWidth     =   19110
    MDIChild        =   -1  'True
    WindowState     =   2  'Maximized
-   _ExtentX        =   34687
-   _ExtentY        =   19182
+   _ExtentX        =   33708
+   _ExtentY        =   26326
    _Version        =   393216
    _DesignerVersion=   100688210
-   ReportWidth     =   11127
+   ReportWidth     =   10621
    BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
       Name            =   "Arial"
       Size            =   8.25
@@ -25,9 +25,10 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
    EndProperty
    GridX           =   1
    GridY           =   1
-   LeftMargin      =   20
+   LeftMargin      =   10
+   RightMargin     =   10
    TopMargin       =   100
-   BottomMargin    =   1440
+   BottomMargin    =   10
    _Settings       =   7
    DataMember      =   "Documentos"
    NumSections     =   5
@@ -41,8 +42,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
    BeginProperty Section1 {1C13A8E0-A0B6-11D0-848E-00A0C90DC8A9} 
       _Version        =   393216
       Name            =   "titulos"
-      Object.Height          =   4275
-      NumControls     =   41
+      Object.Height          =   4095
+      NumControls     =   42
       ItemType0       =   3
       BeginProperty Item0 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
@@ -88,7 +89,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          Name            =   "edprecio"
          Object.Left            =   6225
          Object.Top             =   3720
-         Object.Width           =   1980
+         Object.Width           =   1695
          Object.Height          =   240
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -100,7 +101,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
             Strikethrough   =   0   'False
          EndProperty
          Object.Caption         =   "Precio Unitario"
-         Alignment       =   2
+         Alignment       =   1
       EndProperty
       ItemType3       =   3
       BeginProperty Item3 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
@@ -126,9 +127,9 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item4 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "eddesc"
-         Object.Left            =   8280
+         Object.Left            =   7980
          Object.Top             =   3720
-         Object.Width           =   1050
+         Object.Width           =   615
          Object.Height          =   240
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -139,7 +140,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Object.Caption         =   "Desc."
+         Object.Caption         =   "D."
          Alignment       =   2
       EndProperty
       ItemType5       =   6
@@ -680,9 +681,10 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item35 {1C13A8E5-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "logo"
-         Object.Left            =   105
+         Object.Left            =   120
          Object.Width           =   6120
          Object.Height          =   2175
+         Picture         =   "factaPoli.dsx":001C
       EndProperty
       ItemType36      =   3
       BeginProperty Item36 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
@@ -765,18 +767,38 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          Name            =   "logo2"
          Object.Left            =   6510
          Object.Top             =   1260
-         Object.Width           =   4200
+         Object.Width           =   4050
          Object.Height          =   900
          BackStyle       =   1
-         Picture         =   "factaPoli.dsx":001C
+         Picture         =   "factaPoli.dsx":40ED
+      EndProperty
+      ItemType41      =   3
+      BeginProperty Item41 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
+         _Version        =   393216
+         Name            =   "Etiqueta3"
+         Object.Left            =   8670
+         Object.Top             =   3705
+         Object.Width           =   615
+         Object.Height          =   240
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Object.Caption         =   "IVA"
+         Alignment       =   1
       EndProperty
    EndProperty
    SectionCode2    =   4
    BeginProperty Section2 {1C13A8E0-A0B6-11D0-848E-00A0C90DC8A9} 
       _Version        =   393216
       Name            =   "detalle"
-      Object.Height          =   225
-      NumControls     =   5
+      Object.Height          =   240
+      NumControls     =   6
       ItemType0       =   4
       BeginProperty Item0 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
@@ -810,7 +832,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "tddescrip"
          Object.Left            =   945
-         Object.Width           =   5310
+         Object.Width           =   5460
          Object.Height          =   225
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -837,8 +859,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item2 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "tdprecio"
-         Object.Left            =   6975
-         Object.Width           =   1065
+         Object.Left            =   6510
+         Object.Width           =   1380
          Object.Height          =   225
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -895,8 +917,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item4 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "tddesc"
-         Object.Left            =   8175
-         Object.Width           =   1050
+         Object.Left            =   7965
+         Object.Width           =   600
          Object.Height          =   225
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -920,29 +942,59 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          EndProperty
          DataMember      =   "Documentos"
       EndProperty
+      ItemType5       =   4
+      BeginProperty Item5 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
+         _Version        =   393216
+         Name            =   "Texto1"
+         Object.Left            =   8640
+         Object.Top             =   15
+         Object.Width           =   600
+         Object.Height          =   225
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   9
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         DataField       =   "iva"
+         Alignment       =   1
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   1
+            Format          =   "##,##0.00"
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   1034
+            SubFormatType   =   0
+         EndProperty
+         DataMember      =   "Documentos"
+      EndProperty
    EndProperty
    SectionCode3    =   7
    BeginProperty Section3 {1C13A8E0-A0B6-11D0-848E-00A0C90DC8A9} 
       _Version        =   393216
       Name            =   "Totales"
-      Object.Height          =   2325
-      NumControls     =   23
+      Object.Height          =   3315
+      NumControls     =   24
       ItemType0       =   6
       BeginProperty Item0 {1C13A8E4-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Forma2"
          Object.Left            =   45
-         Object.Top             =   75
+         Object.Top             =   15
          Object.Width           =   10515
-         Object.Height          =   1260
+         Object.Height          =   1110
          Shape           =   4
       EndProperty
       ItemType1       =   3
       BeginProperty Item1 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "esubtotal"
-         Object.Left            =   165
-         Object.Top             =   630
+         Object.Left            =   345
+         Object.Top             =   345
          Object.Width           =   1935
          Object.Height          =   285
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -962,7 +1014,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "eiva105"
          Object.Left            =   6420
-         Object.Top             =   585
+         Object.Top             =   390
          Object.Width           =   1365
          Object.Height          =   255
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -982,7 +1034,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "eiva21"
          Object.Left            =   6450
-         Object.Top             =   825
+         Object.Top             =   630
          Object.Width           =   1350
          Object.Height          =   210
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1002,7 +1054,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "eiva27"
          Object.Left            =   6435
-         Object.Top             =   1020
+         Object.Top             =   825
          Object.Width           =   1380
          Object.Height          =   255
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1021,8 +1073,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item5 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "etotal"
-         Object.Left            =   8445
-         Object.Top             =   645
+         Object.Left            =   8475
+         Object.Top             =   330
          Object.Width           =   2025
          Object.Height          =   285
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1043,8 +1095,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item6 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "edescuento"
-         Object.Left            =   2610
-         Object.Top             =   630
+         Object.Left            =   2625
+         Object.Top             =   390
          Object.Width           =   1935
          Object.Height          =   285
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1063,10 +1115,10 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item7 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "etsubtotal"
-         Object.Left            =   165
-         Object.Top             =   270
-         Object.Width           =   2085
-         Object.Height          =   705
+         Object.Left            =   180
+         Object.Top             =   75
+         Object.Width           =   2145
+         Object.Height          =   570
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
             Size            =   9.75
@@ -1084,7 +1136,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "etdescuent"
          Object.Left            =   2610
-         Object.Top             =   240
+         Object.Top             =   90
          Object.Width           =   1980
          Object.Height          =   270
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1104,7 +1156,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "ttiva"
          Object.Left            =   4980
-         Object.Top             =   255
+         Object.Top             =   75
          Object.Width           =   2760
          Object.Height          =   285
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1124,7 +1176,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "ettotal"
          Object.Left            =   8460
-         Object.Top             =   225
+         Object.Top             =   75
          Object.Width           =   2040
          Object.Height          =   270
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1144,7 +1196,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "etiva10"
          Object.Left            =   5760
-         Object.Top             =   585
+         Object.Top             =   390
          Object.Width           =   630
          Object.Height          =   240
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1164,7 +1216,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "etiva21"
          Object.Left            =   5775
-         Object.Top             =   810
+         Object.Top             =   615
          Object.Width           =   630
          Object.Height          =   240
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1184,7 +1236,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "etiva27"
          Object.Left            =   5745
-         Object.Top             =   1035
+         Object.Top             =   840
          Object.Width           =   630
          Object.Height          =   240
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1203,8 +1255,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item14 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Etiqueta1"
-         Object.Left            =   165
-         Object.Top             =   1035
+         Object.Left            =   180
+         Object.Top             =   705
          Object.Width           =   615
          Object.Height          =   270
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1222,8 +1274,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item15 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Etiqueta2"
-         Object.Left            =   2700
-         Object.Top             =   1020
+         Object.Left            =   2685
+         Object.Top             =   705
          Object.Width           =   960
          Object.Height          =   270
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1242,7 +1294,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
          _Version        =   393216
          Name            =   "lblCAE"
          Object.Left            =   825
-         Object.Top             =   1035
+         Object.Top             =   705
          Object.Width           =   1815
          Object.Height          =   255
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1260,8 +1312,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item17 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "lblVtoCAE"
-         Object.Left            =   3705
-         Object.Top             =   1020
+         Object.Left            =   3675
+         Object.Top             =   705
          Object.Width           =   1920
          Object.Height          =   255
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1279,16 +1331,16 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item18 {1C13A8E3-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Línea1"
-         Object.Left            =   165
-         Object.Top             =   990
+         Object.Left            =   180
+         Object.Top             =   675
          Object.Width           =   5505
       EndProperty
       ItemType19      =   3
       BeginProperty Item19 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "esaldodeudor"
-         Object.Left            =   7950
-         Object.Top             =   1020
+         Object.Left            =   7965
+         Object.Top             =   615
          Object.Width           =   2550
          Object.Height          =   270
          Object.Visible         =   0   'False
@@ -1307,9 +1359,9 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item20 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "eleyenda"
-         Object.Left            =   165
-         Object.Top             =   2085
-         Object.Width           =   10455
+         Object.Left            =   150
+         Object.Top             =   1890
+         Object.Width           =   7965
          Object.Height          =   240
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -1325,10 +1377,10 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item21 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "lblCAE2"
-         Object.Left            =   150
-         Object.Top             =   1380
-         Object.Width           =   10380
-         Object.Height          =   435
+         Object.Left            =   165
+         Object.Top             =   1185
+         Object.Width           =   5430
+         Object.Height          =   405
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "3 of 9 Barcode"
             Size            =   15.75
@@ -1344,9 +1396,9 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
       BeginProperty Item22 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "enroCodigoBarra"
-         Object.Left            =   150
-         Object.Top             =   1860
-         Object.Width           =   10455
+         Object.Left            =   120
+         Object.Top             =   1635
+         Object.Width           =   5520
          Object.Height          =   240
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -1358,12 +1410,21 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} ifactaPoli
             Strikethrough   =   0   'False
          EndProperty
       EndProperty
+      ItemType23      =   7
+      BeginProperty Item23 {1C13A8E5-A0B6-11D0-848E-00A0C90DC8A9} 
+         _Version        =   393216
+         Name            =   "qr"
+         Object.Left            =   8145
+         Object.Top             =   1200
+         Object.Width           =   2385
+         Object.Height          =   2115
+         Picture         =   "factaPoli.dsx":56EA
+      EndProperty
    EndProperty
    SectionCode4    =   8
    BeginProperty Section4 {1C13A8E0-A0B6-11D0-848E-00A0C90DC8A9} 
       _Version        =   393216
       Name            =   "Section5"
-      Object.Height          =   15
       NumControls     =   0
    EndProperty
 End
@@ -1373,6 +1434,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub DataReport_Initialize()
+On Error Resume Next
 Dim v As String
 
 v = ""
@@ -1438,4 +1500,13 @@ Else
     ifactaPoli.Sections(4).Controls("eleyenda").Visible = False
 End If
 
+    If vqrnombre = "" Then vqrnombre = "qr"
+    
+    Set ifactaPoli.Sections(4).Controls("qr").Picture = LoadPicture(App.Path + "\" + vqrnombre + ".jpg")
+    
+    Debug.Print ("ifacturaPoli " + App.Path + "\" + vqrnombre + ".jpg")
+
+
+If Err Then Exit Sub
 End Sub
+
