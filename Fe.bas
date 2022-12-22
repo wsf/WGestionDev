@@ -461,9 +461,9 @@ End If
     
       ' fe.F1DetalleImpNeto = Val(vneto)
    
-    If vTipoComprobante >= 6 Then
-        fe.F1DetalleImpOpEx = Val(Format(vtotal, "#######.00"))
-    End If
+    'If vTipoComprobante >= 6 Then
+    '    fe.F1DetalleImpOpEx = Val(Format(vtotal, "#######.00"))
+    'End If
     
     
     
@@ -502,7 +502,9 @@ End If
                         
                         
                         
-      If vTipoComprobante > 0 And vTipoComprobante < 6 Then
+      If (vTipoComprobante > 0 And vTipoComprobante < 11) Or (vTipoComprobante > 50 And vTipoComprobante < 60) Then
+      
+      'If vTipoComprobante > 0 And vTipoComprobante < 6 Then
       fe.F1DetalleImpTotalConc = 0
       
         

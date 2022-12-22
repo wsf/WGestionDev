@@ -4,7 +4,7 @@
 	<Titulo>Programa de Gestion Comercial a medida para :</Titulo>
 	<UServidor>MySQL</UServidor>
 	<UUsuario>Admin</UUsuario>
-	<UEmpresa>wgestiontito</UEmpresa>
+	<UEmpresa>wgestiontch</UEmpresa>
 	<Password>wsf</Password>
 	<Login>Auto</Login>
 	<Demo>False</Demo>
@@ -31,7 +31,7 @@
 	<AsientosAutomaticos>False</AsientosAutomaticos>
 	<TipoCliente>Volquete</TipoCliente>
 	<ComunaCnn>driver={MySQL ODBC 3.51 Driver};server=localhost;port=3306;uid=root;pwd=dalas.2009;database=comunadb;OPTION=8</ComunaCnn>
-	<Puesto>CAJA</Puesto>
+	<Puesto>Comuna</Puesto>
 	<Cliente>PONS</Cliente>
 	<ObtieneCAE>SI</ObtieneCAE>
 	<vcuit>30601011901</vcuit>
@@ -53,5 +53,6 @@
 	<logo>SI</logo>
 	<TipoPago>Contado</TipoPago>
 	<Textil>ADBA111</Textil>
+	<PrecioConIva>True</PrecioConIva>
 </Configuracion>
 

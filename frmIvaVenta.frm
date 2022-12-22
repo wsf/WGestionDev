@@ -800,9 +800,22 @@ Dim ponerenciti As Boolean
         
         If .Recordset("TipoMovimiento") = "Nota C" And bFacturas.Recordset("Letra").Value = "B" Then
            vtipoDocu = getTipoDoc("NotaCB")
+           
+           If bFacturas.Recordset("Letra") = "M" Then
+                vtipoDocu = "53"
+           End If
+           
+           
         Else
             vtipoDocu = getTipoDoc(.Recordset("TipoMovimiento").Value)
+            
+            If bFacturas.Recordset("Letra") = "M" Then
+                vtipoDocu = "51"
+            End If
+            
         End If
+        
+
         
 
     
@@ -1340,9 +1353,9 @@ End If
         With bFacturas
             .ConnectionString = pathDBMySQL
             '.RecordSource = "SELECT * FROM factura WHERE (month(fecha) = '" & AjustarMes(Month(dtpFecha(0).Value)) & "' AND year(fecha) = '" & Year(dtpFecha(1).Value) & "') AND (tipo <> 'Documento' OR Tipo Is NULL) AND (TipoMovimiento <> 'RC')  ORDER BY Fecha ASC, tipo ASC, Ncomprobante ASC"
-            .RecordSource = "SELECT * FROM factura WHERE (month(fecha) = '" & AjustarMes(Month(dtpFecha(0).Value)) & "' AND year(fecha) = '" & Year(dtpFecha(1).Value) & "') AND (tipo <> 'Documento' OR Tipo Is NULL) and (Letra = 'A' or Letra = 'B')   ORDER BY Fecha ASC, tipo ASC, Ncomprobante ASC"
+            .RecordSource = "SELECT * FROM factura WHERE (month(fecha) = '" & AjustarMes(Month(dtpFecha(0).Value)) & "' AND year(fecha) = '" & Year(dtpFecha(1).Value) & "') AND (tipo <> 'Documento' OR Tipo Is NULL) and (Letra = 'A' or Letra = 'B' or Letra = 'M')   ORDER BY Fecha ASC, tipo ASC, Ncomprobante ASC"
             
-            .RecordSource = "SELECT * FROM factura WHERE fecha >= '" + strfechaMySQL(dtpFecha(0)) + "' and fecha <= '" + strfechaMySQL(dtpFecha(1)) + "' AND (tipo <> 'Documento' OR Tipo Is NULL) and (Letra = 'A' or Letra = 'B')   " + _
+            .RecordSource = "SELECT * FROM factura WHERE fecha >= '" + strfechaMySQL(dtpFecha(0)) + "' and fecha <= '" + strfechaMySQL(dtpFecha(1)) + "' AND (tipo <> 'Documento' OR Tipo Is NULL) and (Letra = 'A' or Letra = 'B' or Letra = 'M')   " + _
             " " + vcondEmpresas + _
             "  group by PuntoDeVenta,Ncomprobante,TipoMovimiento,Codigo,tipo " + _
             " ORDER BY Fecha ASC, tipo ASC, Ncomprobante ASC"
