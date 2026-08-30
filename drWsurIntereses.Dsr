@@ -5,7 +5,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
    ClientHeight    =   10755
    ClientLeft      =   60
    ClientTop       =   345
-   ClientWidth     =   19395
+   ClientWidth     =   19080
    MDIChild        =   -1  'True
    WindowState     =   2  'Maximized
    _ExtentX        =   34211
@@ -22,8 +22,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
       Italic          =   0   'False
       Strikethrough   =   0   'False
    EndProperty
-   GridX           =   1
-   GridY           =   1
+   GridX           =   10
+   GridY           =   10
    TopMargin       =   1440
    BottomMargin    =   1440
    _Settings       =   7
@@ -413,8 +413,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
       BeginProperty Item2 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Texto3"
-         Object.Left            =   7485
-         Object.Top             =   15
+         Object.Left            =   7350
          Object.Width           =   1065
          Object.Height          =   240
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -434,7 +433,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
             HaveTrueFalseNull=   0
             FirstDayOfWeek  =   0
             FirstWeekOfYear =   0
-            LCID            =   3082
+            LCID            =   1033
             SubFormatType   =   0
          EndProperty
          DataMember      =   "Rural"
@@ -443,7 +442,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
       BeginProperty Item3 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Texto4"
-         Object.Left            =   8670
+         Object.Left            =   8520
          Object.Width           =   945
          Object.Height          =   240
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -463,7 +462,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
             HaveTrueFalseNull=   0
             FirstDayOfWeek  =   0
             FirstWeekOfYear =   0
-            LCID            =   3082
+            LCID            =   1033
             SubFormatType   =   0
          EndProperty
          DataMember      =   "Rural"
@@ -472,7 +471,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
       BeginProperty Item4 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Texto5"
-         Object.Left            =   9615
+         Object.Left            =   9465
          Object.Width           =   1200
          Object.Height          =   240
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -492,7 +491,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
             HaveTrueFalseNull=   0
             FirstDayOfWeek  =   0
             FirstWeekOfYear =   0
-            LCID            =   3082
+            LCID            =   1033
             SubFormatType   =   0
          EndProperty
          DataMember      =   "Rural"
@@ -519,20 +518,20 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
       _Version        =   393216
       Name            =   "Sección5"
       Object.Height          =   678
-      NumControls     =   5
+      NumControls     =   9
       ItemType0       =   13
       BeginProperty Item0 {49FF6930-2B8C-11D1-8DA9-00A0C90FFFC2} 
          _Version        =   393216
          Name            =   "Función2"
-         Object.Left            =   5040
-         Object.Top             =   90
-         Object.Width           =   2205
-         Object.Height          =   390
+         Object.Left            =   5610
+         Object.Top             =   150
+         Object.Width           =   1485
+         Object.Height          =   300
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
-            Size            =   12
+            Size            =   9
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -546,7 +545,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
             HaveTrueFalseNull=   0
             FirstDayOfWeek  =   0
             FirstWeekOfYear =   0
-            LCID            =   3082
+            LCID            =   1033
             SubFormatType   =   0
          EndProperty
          DataMember      =   "Rural"
@@ -555,15 +554,15 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
       BeginProperty Item1 {49FF6930-2B8C-11D1-8DA9-00A0C90FFFC2} 
          _Version        =   393216
          Name            =   "Función3"
-         Object.Left            =   7410
-         Object.Top             =   90
-         Object.Width           =   1890
-         Object.Height          =   360
+         Object.Left            =   7395
+         Object.Top             =   150
+         Object.Width           =   1740
+         Object.Height          =   300
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
-            Size            =   12
+            Size            =   9
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -577,7 +576,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
             HaveTrueFalseNull=   0
             FirstDayOfWeek  =   0
             FirstWeekOfYear =   0
-            LCID            =   3082
+            LCID            =   1033
             SubFormatType   =   0
          EndProperty
          DataMember      =   "Rural"
@@ -586,15 +585,15 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
       BeginProperty Item2 {49FF6930-2B8C-11D1-8DA9-00A0C90FFFC2} 
          _Version        =   393216
          Name            =   "Función4"
-         Object.Left            =   9420
-         Object.Top             =   90
-         Object.Width           =   1440
-         Object.Height          =   360
+         Object.Left            =   9390
+         Object.Top             =   150
+         Object.Width           =   1365
+         Object.Height          =   315
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
-            Size            =   12
+            Size            =   9
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -608,7 +607,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
             HaveTrueFalseNull=   0
             FirstDayOfWeek  =   0
             FirstWeekOfYear =   0
-            LCID            =   3082
+            LCID            =   1033
             SubFormatType   =   0
          EndProperty
          DataMember      =   "Rural"
@@ -631,6 +630,82 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drWsurIntereses
          Object.Height          =   60
          BackColor       =   0
          BackStyle       =   1
+      EndProperty
+      ItemType5       =   3
+      BeginProperty Item5 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
+         _Version        =   393216
+         Name            =   "Label1"
+         Object.Left            =   5400
+         Object.Top             =   135
+         Object.Width           =   255
+         Object.Height          =   210
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Object.Caption         =   "$"
+      EndProperty
+      ItemType6       =   3
+      BeginProperty Item6 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
+         _Version        =   393216
+         Name            =   "Label2"
+         Object.Left            =   7245
+         Object.Top             =   135
+         Object.Width           =   255
+         Object.Height          =   210
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Object.Caption         =   "$"
+      EndProperty
+      ItemType7       =   3
+      BeginProperty Item7 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
+         _Version        =   393216
+         Name            =   "Label3"
+         Object.Left            =   9240
+         Object.Top             =   135
+         Object.Width           =   255
+         Object.Height          =   210
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Object.Caption         =   "$"
+      EndProperty
+      ItemType8       =   3
+      BeginProperty Item8 {1C13A8E1-A0B6-11D0-848E-00A0C90DC8A9} 
+         _Version        =   393216
+         Name            =   "Label4"
+         Object.Left            =   75
+         Object.Top             =   120
+         Object.Width           =   4590
+         Object.Height          =   270
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Object.Caption         =   "Importes expresados en pesos argentinos"
       EndProperty
    EndProperty
 End

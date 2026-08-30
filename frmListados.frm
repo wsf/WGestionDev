@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
 Object = "{63BEADB1-20E1-478A-9B40-DDDAFBF3624F}#1.0#0"; "bsGradientLabel.ocx"
@@ -341,19 +341,15 @@ Begin VB.Form frmBancoCajaDetalle
             Width           =   4755
             _ExtentX        =   8387
             _ExtentY        =   450
-            Caption         =   "Debe imprimir el Balance y la composición de Saldo"
             BeginProperty Fount {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "MS Sans Serif"
                Size            =   8.25
                Charset         =   0
-               Weight          =   700
+               Weight          =   400
                Underline       =   0   'False
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Colour1         =   4210752
-            Colour2         =   4210752
-            CaptionAlignment=   1
          End
          Begin XtremeSuiteControls.PushButton PusComposiciónDe 
             Height          =   375
@@ -1603,7 +1599,7 @@ Begin VB.Form frmBancoCajaDetalle
          _ExtentX        =   3096
          _ExtentY        =   661
          _Version        =   393216
-         Format          =   71106561
+         Format          =   208863233
          CurrentDate     =   41887
       End
       Begin XtremeSuiteControls.PushButton PusMostrarTodo 
@@ -3535,10 +3531,20 @@ Do Until rs.EOF
                 vegresos = fun_totalDC(vidBancos, "Credito", vid)
                 Debug.Print (" Suma debito / credito : " + Str(vingresos) + " - " + Str(vegresos) + " >> " + Str(vidBancos))
                 
+                ' todo: Ale modificado el 20260830
+                ' Saldo anterior calculado a partie del saldofinal - ingresos + egresos, porque vimos con fabiana vs, ingreso y egreso son correctos
+                vsa = vs - vingresos + vegresos
+                vsp = vingresos - vegresos
+                ' ..
+            
             
                 vcampos = "(santerior,speriodo,saldo,idbancos,idcajacierre,idanomes,ingresos,egresos)"
                 vvalores = "(" + Str(vsa) + "," + Str(vsp) + "," + Str(vs) + ",'" + vidBancos + "'," + Str(vid) + "," + Str(vidanomes) + "," + Str$(vingresos) + "," + Str$(vegresos) + ")"
             
+                ' todo: Ale modificado el 20260830
+                'vcampos = "(santerior,speriodo,saldo,idbancos,idcajacierre,idanomes)"
+                'vvalores = "(" + Str(vsa) + "," + Str(vsp) + "," + Str(vs) + ",'" + vidBancos + "'," + Str(vid) + "," + Str(vidanomes) + ")"
+                
                 vsql = "insert into t_cajacierresaldos " + vcampos + " values " + vvalores
             
                 Debug.Print "Caja Saldos: -> " + vsql
@@ -4244,6 +4250,24 @@ With Mantenimiento.rsCajaCierreSaldos
 
 If .State = 1 Then .Close
 
+.Source = " select 0 as ingresos, 0 as egresos, " + _
+"  '2023-01-01' as fecha, " + _
+"  t_cajacierresaldos.idbancos, " + _
+"  bancos.descripcion, " + _
+"  t_cajacierresaldos.santerior, " + _
+"  t_cajacierresaldos.speriodo, " + _
+"  t_cajacierresaldos.saldo " + _
+"  from t_cajacierre " + _
+"  inner join t_cajacierresaldos on " + _
+"    (t_cajacierre.idcajacierre = t_cajacierresaldos.idcajacierre) " + _
+"  inner join bancos on " + _
+"    bancos.idBancos = t_cajacierresaldos.idBancos " + _
+" Where " + _
+"  t_cajacierresaldos.idcajacierre = " + Str(vidcierecaja) + " " + _
+" order by t_cajacierresaldos.idbancos asc "
+
+' todo: ale modificado el 20260830
+
 .Source = " select ingresos, egresos, " + _
 "  fecha, " + _
 "  t_cajacierresaldos.idbancos, " + _
@@ -4259,6 +4283,7 @@ If .State = 1 Then .Close
 " Where " + _
 "  t_cajacierresaldos.idcajacierre = " + Str(vidcierecaja) + " " + _
 " order by t_cajacierresaldos.idbancos asc "
+        
         
         
 If .State = 0 Then .Open

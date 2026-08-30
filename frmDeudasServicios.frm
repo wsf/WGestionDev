@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
-Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
+Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{A8E5842E-102B-4289-9D57-3B3F5B5E15D3}#13.0#0"; "Codejock.Controls.v13.0.0.Demo.ocx"
 Object = "{C8E5842E-102B-4289-9D57-3B3F5B5E15D3}#13.0#0"; "Codejock.ShortcutBar.v13.0.0.Demo.ocx"
 Begin VB.Form frmDeudasServicios 
@@ -60,7 +60,7 @@ Begin VB.Form frmDeudasServicios
          _ExtentY        =   529
          _Version        =   393216
          CustomFormat    =   "MM/yyyy"
-         Format          =   76218371
+         Format          =   201588739
          CurrentDate     =   42479
       End
       Begin XtremeSuiteControls.PushButton PusBorrar 
@@ -339,7 +339,7 @@ Begin VB.Form frmDeudasServicios
          End
          Begin XtremeSuiteControls.PushButton PusImprimir 
             Height          =   270
-            Left            =   90
+            Left            =   60
             TabIndex        =   100
             Top             =   150
             Width           =   1155
@@ -498,7 +498,7 @@ Begin VB.Form frmDeudasServicios
             _ExtentY        =   503
             _Version        =   393216
             CalendarBackColor=   65535
-            Format          =   76218369
+            Format          =   201654273
             CurrentDate     =   42650
          End
          Begin MSComCtl2.DTPicker vfhasta 
@@ -511,7 +511,7 @@ Begin VB.Form frmDeudasServicios
             _ExtentY        =   503
             _Version        =   393216
             CalendarBackColor=   65535
-            Format          =   76218369
+            Format          =   201654273
             CurrentDate     =   42650
          End
          Begin XtremeSuiteControls.PushButton PusFijar 
@@ -906,7 +906,7 @@ Begin VB.Form frmDeudasServicios
          _StockProps     =   79
          Caption         =   "Contribuyente"
          UseVisualStyle  =   -1  'True
-         Picture         =   "frmDeudasServicios.frx":0259
+         Picture         =   "frmDeudasServicios.frx":025E
       End
       Begin XtremeSuiteControls.GroupBox GroupBox2 
          Height          =   705
@@ -1512,8 +1512,10 @@ Else
     Me.vlibredeuda.Text = Replace$(v, "WHEELWRIGHT", "JUNCAL")
 End If
 
-vfdesde.Value = Date
-vfhasta.Value = Date
+If vfdesde.Value = vfhasta Then
+    vfdesde.Value = Date
+    vfhasta.Value = Date
+End If
 
 
 If Err Then Exit Sub

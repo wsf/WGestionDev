@@ -1792,8 +1792,13 @@ End Function
 Public Function UltimoNroInterno2() As Long
 On Error Resume Next
 
+' calculo numero interno - nrointerno - ultimonrointerno
 
-Dim vvid, vvid_inicial As Long
+Dim vvid, vvid_inicial, max_bm, max_asientos, max_ctacte, max_pctacte, max_cheques As Long
+Dim max_factura, max_pfactuta As Long
+
+
+
 Dim vsql As String
 Dim i As Integer
 
@@ -1801,8 +1806,92 @@ Dim error_nrointerno As Boolean
 
 vvid = 0
 
+
+
+' averiguo max nro interno de asientos
+vsql = "select max(nrointerno) as c from asientos"
+max_asientos = traerDatos2(vsql, "c", pathDBMySQL)
+
+
+' averiguo max nro interno de bancosmovimientos
+vsql = "select max(nrointerno) as c from bancosmovimientos"
+max_bm = traerDatos2(vsql, "c", pathDBMySQL)
+
+
+
+' averiguo max nro interno de cuentascorrientes
+vsql = "select max(nrointerno) as c from cuentascorrientes"
+max_ctacte = traerDatos2(vsql, "c", pathDBMySQL)
+
+
+' averiguo max nro interno de pcuentascorrientes
+vsql = "select max(nrointerno) as c from pcuentascorrientes"
+max_pctacte = traerDatos2(vsql, "c", pathDBMySQL)
+
+
+' averiguo max nro interno de cheques
+vsql = "select max(nrointerno) as c from cheques"
+max_cheques = traerDatos2(vsql, "c", pathDBMySQL)
+
+
+
+' averiguo max nro interno de factura
+vsql = "select max(nrointerno) as c from factura"
+max_factura = traerDatos2(vsql, "c", pathDBMySQL)
+
+
+' averiguo max nro interno de pfactura
+vsql = "select max(nrointerno) as c from pfactura"
+Dim max_pfactura As Long
+
+max_pfactura = traerDatos2(vsql, "c", pathDBMySQL)
+
+
+
+
+
 error_nrointerno = False
 vvid_inicial = traerDatos2("select max(t.`numero`) as c from t_nrointerno t", "c", pathDBMySQL)
+
+
+
+If vvid_inicial < max_pfactura Then
+    vvid_inicial = max_pfactura
+End If
+
+If vvid_inicial < max_factura Then
+    vvid_inicial = max_factura
+End If
+
+
+If vvid_inicial < max_cheques Then
+    vvid_inicial = max_cheques
+End If
+
+
+If vvid_inicial < max_pctacte Then
+    vvid_inicial = max_pctacte
+End If
+
+
+If vvid_inicial < max_ctacte Then
+    vvid_inicial = max_ctacte
+End If
+
+
+
+
+
+
+If vvid_inicial < max_asientos Then
+    vvid_inicial = max_asientos
+End If
+
+
+If vvid_inicial < max_bm Then
+    vvid_inicial = max_bm
+End If
+
 
 
 vsql = "insert into t_nrointerno (auxiliar) values (1)"

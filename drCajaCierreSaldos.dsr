@@ -5,7 +5,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCajaCierreSaldos
    ClientHeight    =   10845
    ClientLeft      =   60
    ClientTop       =   345
-   ClientWidth     =   19635
+   ClientWidth     =   19080
    MDIChild        =   -1  'True
    WindowState     =   2  'Maximized
    _ExtentX        =   35930
@@ -22,8 +22,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCajaCierreSaldos
       Italic          =   0   'False
       Strikethrough   =   0   'False
    EndProperty
-   GridX           =   1
-   GridY           =   1
+   GridX           =   10
+   GridY           =   10
    _Settings       =   7
    DataMember      =   "CajaCierreSaldos"
    NumSections     =   5
@@ -276,7 +276,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCajaCierreSaldos
    BeginProperty Section2 {1C13A8E0-A0B6-11D0-848E-00A0C90DC8A9} 
       _Version        =   393216
       Name            =   "Sección1"
-      Object.Height          =   330
+      Object.Height          =   375
       NumControls     =   8
       ItemType0       =   4
       BeginProperty Item0 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
@@ -311,7 +311,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCajaCierreSaldos
          _Version        =   393216
          Name            =   "Texto3"
          Object.Left            =   1665
-         Object.Width           =   3480
+         Object.Width           =   3075
          Object.Height          =   285
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -338,9 +338,9 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCajaCierreSaldos
       BeginProperty Item2 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Texto4"
-         Object.Left            =   5115
+         Object.Left            =   4800
          Object.Top             =   15
-         Object.Width           =   1305
+         Object.Width           =   1095
          Object.Height          =   285
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -368,14 +368,14 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCajaCierreSaldos
       BeginProperty Item3 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Texto5"
-         Object.Left            =   8535
-         Object.Width           =   1020
+         Object.Left            =   8445
+         Object.Width           =   1110
          Object.Height          =   285
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
-            Weight          =   700
+            Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
@@ -398,8 +398,8 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCajaCierreSaldos
       BeginProperty Item4 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Texto6"
-         Object.Left            =   9480
-         Object.Width           =   1380
+         Object.Left            =   9570
+         Object.Width           =   1290
          Object.Height          =   285
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
@@ -436,13 +436,13 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCajaCierreSaldos
       BeginProperty Item6 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
          Name            =   "Texto1"
-         Object.Left            =   7590
+         Object.Left            =   7320
          Object.Top             =   15
-         Object.Width           =   795
+         Object.Width           =   1035
          Object.Height          =   285
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
-            Size            =   8.25
+            Size            =   6.75
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -466,21 +466,21 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCajaCierreSaldos
       ItemType7       =   4
       BeginProperty Item7 {1C13A8E2-A0B6-11D0-848E-00A0C90DC8A9} 
          _Version        =   393216
-         Name            =   "Texto7"
-         Object.Left            =   6615
+         Name            =   "Text1"
+         Object.Left            =   6210
          Object.Top             =   15
-         Object.Width           =   885
+         Object.Width           =   1035
          Object.Height          =   285
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"
-            Size            =   8.25
+            Size            =   6.75
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   255
+         ForeColor       =   16384
          DataField       =   "ingresos"
          Alignment       =   1
          BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
@@ -562,9 +562,9 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} drCajaCierreSaldos
       BeginProperty Item3 {49FF6930-2B8C-11D1-8DA9-00A0C90FFFC2} 
          _Version        =   393216
          Name            =   "Función2"
-         Object.Left            =   7920
+         Object.Left            =   7650
          Object.Top             =   45
-         Object.Width           =   1530
+         Object.Width           =   1800
          Object.Height          =   345
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial"

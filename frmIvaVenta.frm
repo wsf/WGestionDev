@@ -987,6 +987,10 @@ Dim ponerenciti As Boolean
         vneto = .Recordset("neto").Value
         
         neto_para0 = vneto - vivas
+        
+        If .Recordset("Letra").Value = "B" Then
+            neto_para0 = 0
+        End If
        
         
         'vtotal_netos = vviva21 + vviva105 + vviva27

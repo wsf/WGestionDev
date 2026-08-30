@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{0ECD9B60-23AA-11D0-B351-00A0C9055D8E}#6.0#0"; "MSHFLXGD.OCX"
-Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
+Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
 Object = "{63BEADB1-20E1-478A-9B40-DDDAFBF3624F}#1.0#0"; "bsGradientLabel.ocx"
 Object = "{A8E5842E-102B-4289-9D57-3B3F5B5E15D3}#13.0#0"; "Codejock.Controls.v13.0.0.Demo.ocx"
 Object = "{50BF2256-701F-46F2-8ADB-2202CE6922BC}#1.0#0"; "Copia de KlexGrid.ocx"
@@ -191,7 +191,7 @@ Begin VB.Form frmIngresosEgresos
             _ExtentX        =   2937
             _ExtentY        =   556
             _Version        =   393216
-            Format          =   75497473
+            Format          =   168361985
             CurrentDate     =   42828
          End
          Begin VB.TextBox txtvimporte_pagare 
@@ -312,7 +312,6 @@ Begin VB.Form frmIngresosEgresos
          _Version        =   393217
          BackColor       =   12648447
          BorderStyle     =   0
-         Enabled         =   -1  'True
          Appearance      =   0
          TextRTF         =   $"frmIngresosEgresos.frx":0B34
       End
@@ -480,7 +479,7 @@ Begin VB.Form frmIngresosEgresos
       BorderStyle     =   2
       Begin XtremeSuiteControls.PushButton cmdGuardar 
          Height          =   315
-         Left            =   150
+         Left            =   120
          TabIndex        =   11
          Top             =   60
          Width           =   1635
@@ -567,6 +566,7 @@ Begin VB.Form frmIngresosEgresos
       _StockProps     =   68
       PaintManager.BoldSelected=   -1  'True
       ItemCount       =   6
+      SelectedItem    =   5
       Item(0).Caption =   "Ingresos-Egresos"
       Item(0).ControlCount=   42
       Item(0).Control(0)=   "KlexMovimientoCaja"
@@ -648,16 +648,18 @@ Begin VB.Form frmIngresosEgresos
       Begin VB.CommandButton cmdCerrar2 
          Caption         =   "Cerrar"
          Height          =   525
-         Left            =   13530
+         Left            =   -56470
          TabIndex        =   148
          Top             =   7710
+         Visible         =   0   'False
          Width           =   615
       End
       Begin XtremeSuiteControls.PushButton PusActSaldo 
          Height          =   240
-         Left            =   9390
+         Left            =   -60610
          TabIndex        =   147
          Top             =   390
+         Visible         =   0   'False
          Width           =   1275
          _Version        =   851968
          _ExtentX        =   2249
@@ -668,9 +670,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin MSHierarchicalFlexGridLib.MSHFlexGrid gsaldos 
          Height          =   2595
-         Left            =   10890
+         Left            =   -59110
          TabIndex        =   146
          Top             =   330
+         Visible         =   0   'False
          Width           =   3255
          _ExtentX        =   5741
          _ExtentY        =   4577
@@ -701,9 +704,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.PushButton PusLimpiar 
          Height          =   225
-         Left            =   1380
+         Left            =   -68620
          TabIndex        =   140
          Top             =   2160
+         Visible         =   0   'False
          Width           =   615
          _Version        =   851968
          _ExtentX        =   1085
@@ -714,9 +718,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.PushButton PusBuscarDocumento 
          Height          =   345
-         Left            =   8580
+         Left            =   -61420
          TabIndex        =   137
          Top             =   2070
+         Visible         =   0   'False
          Width           =   1095
          _Version        =   851968
          _ExtentX        =   1931
@@ -729,10 +734,9 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.PushButton PusCierreDe 
          Height          =   405
-         Left            =   -69820
+         Left            =   180
          TabIndex        =   125
          Top             =   1260
-         Visible         =   0   'False
          Width           =   2055
          _Version        =   851968
          _ExtentX        =   3625
@@ -805,9 +809,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.TabControl tab2 
          Height          =   1755
-         Left            =   45
+         Left            =   -69955
          TabIndex        =   39
          Top             =   3270
+         Visible         =   0   'False
          Width           =   13965
          _Version        =   851968
          _ExtentX        =   24633
@@ -1467,16 +1472,18 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin VB.TextBox vobservacion2 
          Height          =   285
-         Left            =   2580
+         Left            =   -67420
          TabIndex        =   87
          Top             =   7980
+         Visible         =   0   'False
          Width           =   10845
       End
       Begin XtremeSuiteControls.PushButton PusPersonas 
          Height          =   345
-         Left            =   7500
+         Left            =   -62500
          TabIndex        =   82
          Top             =   2070
+         Visible         =   0   'False
          Width           =   1065
          _Version        =   851968
          _ExtentX        =   1879
@@ -1488,69 +1495,78 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin VB.TextBox vcliprovee 
          Height          =   315
-         Left            =   2010
+         Left            =   -67990
          TabIndex        =   57
          Top             =   2100
+         Visible         =   0   'False
          Width           =   4275
       End
       Begin VB.TextBox vrendicion 
          Height          =   315
-         Left            =   5700
+         Left            =   -64300
          TabIndex        =   55
          Top             =   1710
+         Visible         =   0   'False
          Width           =   2235
       End
       Begin VB.CommandButton Command1 
          Caption         =   "Event. +"
          Height          =   345
-         Left            =   12360
+         Left            =   -57640
          TabIndex        =   9
          Top             =   2070
+         Visible         =   0   'False
          Width           =   735
       End
       Begin VB.TextBox vconcepto 
          Height          =   315
-         Left            =   1770
+         Left            =   -68230
          TabIndex        =   46
          Top             =   1710
+         Visible         =   0   'False
          Width           =   2175
       End
       Begin VB.CommandButton cmdEventuales 
          Caption         =   "Eventuales"
          Height          =   345
-         Left            =   11460
+         Left            =   -58540
          TabIndex        =   8
          Top             =   2070
+         Visible         =   0   'False
          Width           =   915
       End
       Begin VB.TextBox vobservacion 
          Height          =   285
-         Left            =   2580
+         Left            =   -67420
          TabIndex        =   38
          Top             =   7680
+         Visible         =   0   'False
          Width           =   10845
       End
       Begin VB.CommandButton cmd 
          Caption         =   "Asistido"
          Height          =   345
-         Left            =   10770
+         Left            =   -59230
          TabIndex        =   7
          Top             =   2070
+         Visible         =   0   'False
          Width           =   675
       End
       Begin VB.CommandButton cmdContribuyente 
          Caption         =   "Contribuyente"
          Height          =   345
-         Left            =   9690
+         Left            =   -60310
          TabIndex        =   6
          Top             =   2070
+         Visible         =   0   'False
          Width           =   1095
       End
       Begin XtremeSuiteControls.GroupBox GBRBSuperior 
          Height          =   375
-         Left            =   8070
+         Left            =   -61930
          TabIndex        =   14
          Top             =   1650
+         Visible         =   0   'False
          Width           =   2505
          _Version        =   851968
          _ExtentX        =   4419
@@ -1624,9 +1640,10 @@ Begin VB.Form frmIngresosEgresos
       Begin VB.Frame Frame1 
          BorderStyle     =   0  'None
          Height          =   315
-         Left            =   210
+         Left            =   -69790
          TabIndex        =   26
          Top             =   5070
+         Visible         =   0   'False
          Width           =   12825
          Begin XtremeSuiteControls.PushButton cmdAgregar 
             Height          =   285
@@ -1725,9 +1742,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.GroupBox GroupBox1 
          Height          =   915
-         Left            =   150
+         Left            =   -69850
          TabIndex        =   19
          Top             =   720
+         Visible         =   0   'False
          Width           =   10425
          _Version        =   851968
          _ExtentX        =   18389
@@ -1755,19 +1773,15 @@ Begin VB.Form frmIngresosEgresos
                Width           =   1275
                _ExtentX        =   2249
                _ExtentY        =   556
-               Caption         =   ""
                BeginProperty Fount {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-                  Name            =   "Terminal"
-                  Size            =   9
-                  Charset         =   255
+                  Name            =   "MS Sans Serif"
+                  Size            =   8.25
+                  Charset         =   0
                   Weight          =   400
                   Underline       =   0   'False
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               Colour1         =   255
-               Colour2         =   255
-               CaptionAlignment=   1
             End
             Begin XtremeSuiteControls.PushButton PusActualizar 
                Height          =   225
@@ -2014,9 +2028,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin Grid.KlexGrid KlexMovimientoCaja 
          Height          =   2265
-         Left            =   120
+         Left            =   -69880
          TabIndex        =   13
          Top             =   5400
+         Visible         =   0   'False
          Width           =   13995
          _ExtentX        =   24686
          _ExtentY        =   3995
@@ -2034,9 +2049,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.PushButton cmdCheque 
          Height          =   315
-         Left            =   9330
+         Left            =   -60670
          TabIndex        =   15
          Top             =   4530
+         Visible         =   0   'False
          Width           =   2355
          _Version        =   851968
          _ExtentX        =   4154
@@ -2051,9 +2067,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.GroupBox gcustodia 
          Height          =   525
-         Left            =   60
+         Left            =   -69940
          TabIndex        =   34
          Top             =   4410
+         Visible         =   0   'False
          Width           =   12945
          _Version        =   851968
          _ExtentX        =   22834
@@ -2064,9 +2081,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.PushButton PusSelConceptos 
          Height          =   315
-         Left            =   210
+         Left            =   -69790
          TabIndex        =   5
          Top             =   1710
+         Visible         =   0   'False
          Width           =   1335
          _Version        =   851968
          _ExtentX        =   2355
@@ -2080,9 +2098,10 @@ Begin VB.Form frmIngresosEgresos
       Begin XtremeSuiteControls.FlatEdit txtAlta 
          Height          =   315
          Index           =   12
-         Left            =   1590
+         Left            =   -68410
          TabIndex        =   1
          Top             =   2880
+         Visible         =   0   'False
          Width           =   1395
          _Version        =   851968
          _ExtentX        =   2461
@@ -2103,9 +2122,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.PushButton PushButton4 
          Height          =   315
-         Left            =   4200
+         Left            =   -65800
          TabIndex        =   0
          Top             =   1740
+         Visible         =   0   'False
          Width           =   1305
          _Version        =   851968
          _ExtentX        =   2302
@@ -2119,9 +2139,10 @@ Begin VB.Form frmIngresosEgresos
       Begin XtremeSuiteControls.FlatEdit txtAlta 
          Height          =   345
          Index           =   13
-         Left            =   4470
+         Left            =   -65530
          TabIndex        =   59
          Top             =   2940
+         Visible         =   0   'False
          Width           =   9675
          _Version        =   851968
          _ExtentX        =   17066
@@ -2133,9 +2154,10 @@ Begin VB.Form frmIngresosEgresos
       Begin XtremeSuiteControls.FlatEdit txtAlta 
          Height          =   315
          Index           =   3
-         Left            =   1500
+         Left            =   -68500
          TabIndex        =   78
          Top             =   2460
+         Visible         =   0   'False
          Width           =   1395
          _Version        =   851968
          _ExtentX        =   2461
@@ -2146,10 +2168,11 @@ Begin VB.Form frmIngresosEgresos
       Begin XtremeSuiteControls.PushButton pbCarga 
          Height          =   315
          Index           =   1
-         Left            =   2940
+         Left            =   -67060
          TabIndex        =   79
          Tag             =   "TipoValor"
          Top             =   2460
+         Visible         =   0   'False
          Width           =   615
          _Version        =   851968
          _ExtentX        =   1085
@@ -2160,9 +2183,10 @@ Begin VB.Form frmIngresosEgresos
       Begin XtremeSuiteControls.FlatEdit txtAlta 
          Height          =   315
          Index           =   4
-         Left            =   3600
+         Left            =   -66400
          TabIndex        =   80
          Top             =   2460
+         Visible         =   0   'False
          Width           =   3915
          _Version        =   851968
          _ExtentX        =   6906
@@ -2310,9 +2334,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.PushButton PushButton12 
          Height          =   255
-         Left            =   2220
+         Left            =   -67780
          TabIndex        =   123
          Top             =   7680
+         Visible         =   0   'False
          Width           =   345
          _Version        =   851968
          _ExtentX        =   609
@@ -2323,9 +2348,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.PushButton PushButton13 
          Height          =   255
-         Left            =   2220
+         Left            =   -67780
          TabIndex        =   124
          Top             =   7980
+         Visible         =   0   'False
          Width           =   345
          _Version        =   851968
          _ExtentX        =   609
@@ -2336,10 +2362,9 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.PushButton PushButton8 
          Height          =   405
-         Left            =   -69820
+         Left            =   180
          TabIndex        =   126
          Top             =   690
-         Visible         =   0   'False
          Width           =   2055
          _Version        =   851968
          _ExtentX        =   3625
@@ -2400,10 +2425,9 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.PushButton PushButton7 
          Height          =   405
-         Left            =   -67660
+         Left            =   2340
          TabIndex        =   145
          Top             =   1260
-         Visible         =   0   'False
          Width           =   2055
          _Version        =   851968
          _ExtentX        =   3625
@@ -2415,9 +2439,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.GroupBox f1 
          Height          =   360
-         Left            =   90
+         Left            =   -69910
          TabIndex        =   48
          Top             =   330
+         Visible         =   0   'False
          Width           =   10875
          _Version        =   851968
          _ExtentX        =   19182
@@ -2541,16 +2566,18 @@ Begin VB.Form frmIngresosEgresos
          ForeColor       =   &H000000FF&
          Height          =   255
          Index           =   11
-         Left            =   150
+         Left            =   -69850
          TabIndex        =   58
          Top             =   2130
+         Visible         =   0   'False
          Width           =   1095
       End
       Begin XtremeSuiteControls.Label lbsaldo 
          Height          =   345
-         Left            =   6300
+         Left            =   -63700
          TabIndex        =   141
          Top             =   2070
+         Visible         =   0   'False
          Width           =   1125
          _Version        =   851968
          _ExtentX        =   1984
@@ -2571,10 +2598,9 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.Label Label8 
          Height          =   405
-         Left            =   -67630
+         Left            =   2370
          TabIndex        =   127
          Top             =   690
-         Visible         =   0   'False
          Width           =   10215
          _Version        =   851968
          _ExtentX        =   18018
@@ -2622,9 +2648,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.Label lblCtaSeleccionada 
          Height          =   165
-         Left            =   7650
+         Left            =   -62350
          TabIndex        =   90
          Top             =   2520
+         Visible         =   0   'False
          Width           =   1335
          _Version        =   851968
          _ExtentX        =   2355
@@ -2635,9 +2662,10 @@ Begin VB.Form frmIngresosEgresos
       End
       Begin XtremeSuiteControls.Label lblCta 
          Height          =   285
-         Left            =   9060
+         Left            =   -60940
          TabIndex        =   89
          Top             =   2490
+         Visible         =   0   'False
          Width           =   3945
          _Version        =   851968
          _ExtentX        =   6959
@@ -2648,17 +2676,19 @@ Begin VB.Form frmIngresosEgresos
       Begin VB.Label Label4 
          Caption         =   "Observación Gral. Linea 2:"
          Height          =   225
-         Left            =   120
+         Left            =   -69880
          TabIndex        =   88
          Top             =   8010
+         Visible         =   0   'False
          Width           =   1905
       End
       Begin XtremeSuiteControls.Label lblAltaCaja 
          Height          =   195
          Index           =   4
-         Left            =   210
+         Left            =   -69790
          TabIndex        =   81
          Top             =   2490
+         Visible         =   0   'False
          Width           =   1245
          _Version        =   851968
          _ExtentX        =   2205
@@ -2671,9 +2701,10 @@ Begin VB.Form frmIngresosEgresos
       Begin XtremeSuiteControls.Label lblAltaCaja 
          Height          =   195
          Index           =   11
-         Left            =   3240
+         Left            =   -66760
          TabIndex        =   60
          Top             =   3030
+         Visible         =   0   'False
          Width           =   1185
          _Version        =   851968
          _ExtentX        =   2090
@@ -2685,9 +2716,10 @@ Begin VB.Form frmIngresosEgresos
       Begin XtremeSuiteControls.Label lblAltaCaja 
          Height          =   195
          Index           =   10
-         Left            =   180
+         Left            =   -69820
          TabIndex        =   54
          Top             =   2910
+         Visible         =   0   'False
          Width           =   1365
          _Version        =   851968
          _ExtentX        =   2408
@@ -2709,16 +2741,18 @@ Begin VB.Form frmIngresosEgresos
       Begin VB.Label lblIngresarUna 
          Caption         =   "Observación Gral. Linea 1:"
          Height          =   225
-         Left            =   120
+         Left            =   -69880
          TabIndex        =   37
          Top             =   7740
+         Visible         =   0   'False
          Width           =   1905
       End
       Begin XtremeSuiteControls.Label VchequesDisplay 
          Height          =   255
-         Left            =   150
+         Left            =   -69850
          TabIndex        =   35
          Top             =   2400
+         Visible         =   0   'False
          Width           =   45
          _Version        =   851968
          _ExtentX        =   -79
@@ -3108,7 +3142,7 @@ initRollbk (vvnrointerno)
 
 vnrointerno = Val(txtAlta(2))
 
-    If Validar = True Then
+    If validar = True Then
            
     g3.Visible = False
     
@@ -3356,7 +3390,7 @@ If Me.RBIngresoEgresoCaja(1).Value = 1 Then ' si es un egreso
 End If
 
 End Sub
-Private Function Validar() As Boolean
+Private Function validar() As Boolean
 On Error Resume Next
 
     Dim vTotalD As Double, vTotalH, vTotalCtaH, vTotalCtaD As Double, l As Integer
@@ -3370,7 +3404,7 @@ On Error Resume Next
     
     If Val(txtAlta(2).Text) = 0 And vDatosEmpresa.UsarNroInterno = "SI" Then ' Alfredo: (Nro Interno) Esto tenes que poner cada vez que se controle el tema del nro interno
         MsgBox "No puede ingresar un Movimiento de Caja sin un Nro Interno!", vbExclamation, "Mensaje ..."
-        Validar = False
+        validar = False
         Exit Function
     End If
 
@@ -3403,7 +3437,7 @@ On Error Resume Next
         Next
     End With
 
-   Validar = True
+   validar = True
    validado = True
 
 
@@ -3416,7 +3450,7 @@ On Error Resume Next
     If Not Abs(Abs(vTotalD - vTotalH) - Val(Me.vtotalcontrol)) <= 1 And Val(Me.vtotalcontrol) > 0.1 Then
 
         MsgBox ("No coincide el total de control")
-            Validar = False
+            validar = False
             validado = False
         
         Exit Function
@@ -3429,13 +3463,13 @@ vValor = vTotalCtaH + vTotalCtaD - vTotalH - vTotalD
 
 If Int(vValor) > 1 Then
              vmensaje = " a favor Ctas contable = "
-               Validar = False
+               validar = False
             validado = False
 End If
 
 If Int(vValor) < -0.1 Then
     vmensaje = " a favor Caja-Bancos = "
-                Validar = False
+                validar = False
                  validado = False
 End If
 
@@ -3444,29 +3478,29 @@ If Not Me.txtAlta(0).Text = "AC" And Not Me.txtAlta(0).Text = "AD" And Not Me.tx
             MsgBox "Hay diferencias entre los montos de cajas-banco y las cuentas contables. " + Chr(13) + _
             "Importe diferenciado : " + vmensaje + Format(Abs(vValor), "###,###,##0.00")
 
-            Validar = False
+            validar = False
             validado = False
 Else
-            Validar = True
+            validar = True
             validado = True
 End If
      
      
      
      If Me.txtAlta(0).Text = "TR" Then
-            Validar = validarTransaccion()
-            validado = Validar
+            validar = validarTransaccion()
+            validado = validar
      End If
      
      If Me.txtAlta(0).Text = "VL" Or Me.txtAlta(0).Text = "AD" Or Me.txtAlta(0).Text = "AC" Then
-            Validar = True
+            validar = True
             validado = True
      End If
      
   
  If Me.vobservacion = "" Then
     If MsgBox("Falta ingresar un concepto para este movimiento" + Chr(13) + " Continúa de todas manera ?", vbYesNo) = vbNo Then
-       Validar = False
+       validar = False
        validado = False
     End If
  
@@ -3475,7 +3509,7 @@ End If
      
 If Me.dtpFecha.Text = "" Then
         MsgBox "Falta ingresar fecha del movimiento "
-       Validar = False
+       validar = False
        validado = False
 End If
     
@@ -3488,10 +3522,18 @@ On Error Resume Next
 
     Dim rsBancosMovimientos As New ADODB.Recordset, sqlBancosMovimientos As String, m As Integer, vImporteD As Double, vImporteH As Double
     
-    sqlBancosMovimientos = "SELECT * FROM BancosMovimientos WHERE (NroInterno = " & Val(txtAlta(2).Text) & ")"
+    'sqlBancosMovimientos = "SELECT * FROM BancosMovimientos WHERE (NroInterno = " & Val(txtAlta(2).Text) & ")"
+    sqlBancosMovimientos = "SELECT * FROM BancosMovimientos WHERE 1=2"
     
     With rsBancosMovimientos
-        Call .Open(sqlBancosMovimientos, ConnDDBB, adOpenDynamic, adLockOptimistic)
+    
+    
+        .CursorLocation = adUseServer
+        
+        ' Call .Open(sqlAsiento, ConnDDBB, adOpenStatic, adLockOptimistic)
+        Call .Open(sqlBancosMovimientos, ConnDDBB, adOpenStatic, adLockOptimistic)
+        
+        'If .EOF = True Then .AddNew
         
         If .EOF = True Then
             
@@ -3584,14 +3626,55 @@ On Error Resume Next
                    '     Call updateNrocheque(Replace(KlexMovimientoCaja.TextMatrix(m, 5), "*", ""), Val(KlexMovimientoCaja.TextMatrix(m, 3)))
                    ' End If
             
+                    .Update
             
                     Call cancelarVales2(m)
             
                     Call setLogCaja(strfechaMySQL(KlexMovimientoCaja.TextMatrix(m, 4)), Replace(KlexMovimientoCaja.TextMatrix(m, 5), "*", ""), vImporteD, vImporteH, Val(txtAlta(2).Text))
 
             
+                    
+                    ' --- todo esto lo hice para hace un insert --------
+                    
+                    Dim vcampos, vvalores, vsql3 As String
+                    vcampos = "(nrocomprobante,idBancos,idBancosCuentas,Fecha,Debito,Credito,Saldo," + _
+                    "Comentario,NroCheque,Comentario2,Comentario3,TipoMovimiento,idTipomovimientos,NroInterno,NroAsiento,idTipoValor,idpersonas,idproveedores,idclientes,cp,ClienteProveedor,codpersona,idCheques)"
+
             
-                    .Update
+                    vvalores = "(" + _
+                    Str(vnrocomprobante) + "," + _
+                    Val(Replace(KlexMovimientoCaja.TextMatrix(m, 5), "*", "")) + "," + _
+                    (KlexMovimientoCaja.TextMatrix(m, 6)) + "," + _
+                    "'" + strfechaMySQL(KlexMovimientoCaja.TextMatrix(m, 4)) + "'," + _
+                    Str(vImporteD) + "," + _
+                    Str(vImporteH) + "," + _
+                    "0" + "," + _
+                    "'" + EsNulo(KlexMovimientoCaja.TextMatrix(m, 10)) + "'," + _
+                    Str(Val(KlexMovimientoCaja.TextMatrix(m, 3))) + "," + _
+                    "'" + Me.vobservacion + "'," + _
+                    "'" + Me.vobservacion2 + "'," + _
+                    Str(Val(EsNulo(KlexMovimientoCaja.TextMatrix(m, 1)))) + "," + _
+                    Str(Val(txtAlta(0).Tag)) + "," + _
+                    txtAlta(2).Text + "," + _
+                    Str(vnroasiento) + "," + _
+                    "'" + EsNulo(KlexMovimientoCaja.TextMatrix(m, 2)) + "'," + _
+                    Str(vidpersonas) + "," + _
+                    Str(vidproveedores) + "," + _
+                    Str(vidclientes) + "," + _
+                    "'" + vcp + "'," + _
+                    "'" + Me.vcliprovee.Tag + "'," + _
+                    "'" + Me.vcliprovee.Tag + "'," + _
+                    EsNulo(KlexMovimientoCaja.TextMatrix(m, 16)) + _
+                    ")"
+                    
+                    
+                    vsql3 = "insert into bancosmovimientos " + vcampos + " values " + vvalores
+                    'Call EjecutarScript(vsql3)
+                    ' --- todo esto lo hice para hace un insert --------
+                    
+                    
+        
+                    
                     
                     vsql2 = "select max(idBancosMovimientos)  as c from bancosmovimientos"
                     vidBancoCaja = traerDatos2(vsql2, "c", pathDBMySQL)
@@ -3670,6 +3753,12 @@ On Error Resume Next
         Next
     
     End With
+    
+     If rsBancosMovimientos.State = 1 Then
+        rsBancosMovimientos.Close
+        Set rsBancosMovimientos = Nothing
+    End If
+                    
     
     'Call BancoYCaja(Val(txtAltaCaja(2).Text))
                 
@@ -4807,7 +4896,7 @@ Private Sub PushButton7_Click()
 End Sub
 
 Private Sub PushButton8_Click()
-    frmBancoCajaDetalle.Show
+     frmBancoCajaDetalle.Show
     frmBancoCajaDetalle.tabbc.SelectedItem = 2
 End Sub
 

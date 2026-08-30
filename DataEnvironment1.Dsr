@@ -1,11 +1,11 @@
 VERSION 5.00
 Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} Mantenimiento 
-   ClientHeight    =   6630
+   ClientHeight    =   13260
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   9735
-   _ExtentX        =   17171
-   _ExtentY        =   11695
+   ClientWidth     =   11505
+   _ExtentX        =   20294
+   _ExtentY        =   23389
    FolderFlags     =   7
    TypeLibGuid     =   "{AC02A8F6-A0C8-481C-8A2E-AED1242647C9}"
    TypeInfoGuid    =   "{F2E87A5D-54EC-4C05-BA49-C6088005B23B}"
@@ -17,6 +17,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} Mantenimiento
       ConnDispId      =   1001
       SourceOfData    =   3
       ConnectionSource=   "Provider=MSDASQL.1;Persist Security Info=False;Data Source=wgestioncomuna"
+      Expanded        =   -1  'True
       QuoteChar       =   96
       SeparatorChar   =   46
    EndProperty
